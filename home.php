@@ -54,7 +54,7 @@ margin-top: 60px;
 			<li><a href="">Home</a></li>
   			<li><a href="">Store</a></li>
   			<li><a href="">Library</a></li>
-  			<li style="float:right"><a href="home.php?logout='1'">Logout</a></li>
+  			<li style="float:right"><a href="log-in.php">Logout</a></li>
   			<li><a href="SampleCrud/viewGames.php">Admin Controls</a></li>
 		</ul>
 	</div>
