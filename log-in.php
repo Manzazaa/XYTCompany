@@ -3,7 +3,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="format.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-	<title>Login | ORBIT Store</title>
+	<title>Login | XYT Company</title>
 	<style type="text/css">
 		#transactiondiv{
 

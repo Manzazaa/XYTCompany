@@ -9,7 +9,7 @@ if (!isset($_SESSION['AdminName'])) {//if there is no session, go to log in page
 <head>
 	<link rel="stylesheet" type="text/css" href="format.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-	<title>Home | ORBIT Store</title>
+	<title>Home | XYT Company</title>
 	<style type="text/css">
 		#slider{
   overflow: hidden;
