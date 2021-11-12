@@ -13,7 +13,7 @@
 <body>
 	<div class="split left">
 		<div id="header">
-			<h1>XYT hehehe</h1>
+			<h1>XYT hehehe XDDD</h1>
 		<div id="subtitlediv">
 			<h3>The leading international products distributor in the Philippines.</h3>
 
