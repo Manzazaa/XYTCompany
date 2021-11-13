@@ -63,10 +63,9 @@ include('../server.php'); ?>
 		</thead>
 <?php
 	$searchQuery = $_POST['search'];
-	$searchQuery = htmlspecialchars($searchQuery);
+	// $searchQuery = htmlspecialchars($searchQuery);
 	//$searchQuery = mysql_real_escape_string($searchQuery);
-	$SQLsearchQuery = ("SELECT * FROM products
-            WHERE (`ProdID` LIKE '%".$searchQuery."%') OR (`ProdName` LIKE '%".$searchQuery."%') OR (`Supplier` LIKE '%".$searchQuery."%')OR") or die(mysql_error());
+	$SQLsearchQuery = ("SELECT * from products WHERE ProdName = '$searchQuery'");
 	$searchResults = $dbcon->query($SQLsearchQuery);
 
 	if ($searchResults->num_rows>0){
