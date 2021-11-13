@@ -1,6 +1,6 @@
 <?php include('dbconnector.php');//let's include the db connection php file 
 $id = $_GET['id'];
-$sql = "SELECT * FROM game WHERE gameID = '$id'";
+$sql = "SELECT * FROM products WHERE ProdID = '$id'";
 
 $result = $dbcon->query($sql);
 $row = $result->fetch_assoc();
@@ -11,12 +11,12 @@ $row = $result->fetch_assoc();
 <head>
 	<link rel="stylesheet" type="text/css" href="stylexs.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-	<title>Update a Game | ORBIT Store</title>
+	<title>Update a Product | XYT</title>
 </head>
 <body>
 	<div>
 		 <ul>
-		 	<li style="color: #66c0f4; margin-left: 50px;margin-right: 50px"><h2>ORBIT Store | Administrator</h2>
+		 	<li style="color: #66c0f4; margin-left: 50px;margin-right: 50px"><h2>XYT Company | Administrator</h2>
         <li>
             <a href="#">ADD RECORD &#9662;</a>
             <ul class="dropdown">
@@ -27,8 +27,8 @@ $row = $result->fetch_assoc();
         <li>
             <a href="#">VIEW RECORD &#9662;</a>
             <ul class="dropdown">
-                <li><a href="viewGames.php">Games</a></li>
-                <li><a href="viewDeveloper.php">Developers</a></li>
+                <li><a href="viewGames.php">Products</a></li>
+                <li><a href="viewDeveloper.php">Suppliers</a></li>
                 <li><a href="viewUsers.php">Users</a></li>
                  <li><a href="viewSpecTransaction.php">Specific Transactions</a></li>
                   <li><a href="viewTransactions.php">All Transactions</a></li>
