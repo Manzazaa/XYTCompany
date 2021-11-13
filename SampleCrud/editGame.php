@@ -56,7 +56,7 @@ $row = $result->fetch_assoc();
 				<input id="txtfld1" type="number" name="quantity" required style="width: 350px" value="<?php echo $row['Quantity'];?> ">
 
 				<p>Price</p>
-				<input id="txtfld1" type="text" name="price" required style="width: 350px" value="<?php echo $row['Cost'];?> ">
+				<input id="txtfld1" type="number" name="price" required style="width: 350px" value="<?php echo $row['Cost'];?> ">
 
 				<p>Description</p>
 				<textarea id="txtfld1" type="textarea" name="Description" required style="width: 350px; height: 250px;"><?php echo $row['Description'];?></textarea>
