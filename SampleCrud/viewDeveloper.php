@@ -16,15 +16,15 @@ include('../server.php'); ?>
         <li>
             <a href="#">ADD RECORD &#9662;</a>
             <ul class="dropdown">
-                <li><a href="addGame.php">Game</a></li>
+                <li><a href="addGame.php">Product</a></li>
                 <li><a href="addDeveloper.php">Developer</a></li>
             </ul>
         </li>
         <li>
             <a href="#">VIEW RECORD &#9662;</a>
             <ul class="dropdown">
-                <li><a href="viewGames.php">Games</a></li>
-                <li><a href="viewDeveloper.php">Developers</a></li>
+                <li><a href="viewGames.php">Product</a></li>
+                <li><a href="viewDeveloper.php">Suppliers</a></li>
                 <li><a href="viewUsers.php">Users</a></li>
                  <li><a href="viewSpecTransaction.php">Specific Transactions</a></li>
                   <li><a href="viewTransactions.php">All Transactions</a></li>

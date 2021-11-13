@@ -18,5 +18,12 @@ session_start();
 	    }
 	  }
 	}
+	//this is for logout
+	if (isset($_GET['logout'])){//if they press the logout button
+		//session_write_close();before logging out, this code saves the data from the session
+		session_destroy();//we frickin destroy that
+		unset($_SESSION['username']);
+		header("location: log-in.php");
+	}
 
 ?>
