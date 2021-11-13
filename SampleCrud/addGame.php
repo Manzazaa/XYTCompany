@@ -10,7 +10,7 @@
 <body>
 	<div>
 		 <ul>
-		 	<li style="color: #66c0f4; margin-left: 50px;margin-right: 50px"><h2>XYT store | Administrator</h2>
+		 	<li style="color: #66c0f4; margin-left: 50px;margin-right: 50px"><h2>XYT Store | Administrator</h2>
         <li>
             <a href="#">VIEW RECORD &#9662;</a>
             <ul class="dropdown">
@@ -47,7 +47,7 @@
 				<input id="txtfld1" type="number" name="ProductQuantity" required style="width: 350px">
 
 				<p>Price</p>
-				<input id="txtfld1" type="text" name="ProductPrice" required style="width: 350px">
+				<input id="txtfld1" type="number" name="ProductPrice" required style="width: 350px">
 
 				<p>Description</p>
 				<textarea id="txtfld1" type="textarea" name="ProductDescription" required style="width: 350px; height: 250px;"></textarea>
