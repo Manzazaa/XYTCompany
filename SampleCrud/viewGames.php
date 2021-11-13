@@ -14,7 +14,7 @@ include('../server.php'); ?>
 		 <ul>
 		 	<li style="color: #66c0f4; margin-left: 50px;margin-right: 50px"><h2>XYT | Administrator</h2>
         <li>
-            <a href="#">ADD RECORD &#9662;</a>
+            <a href="addGame.php">ADD Products</a>
             <!-- <ul class="dropdown">
                 <li><a href="addGame.php">Produ</a></li>
                 <li><a href="addDeveloper.php">Developer</a></li>

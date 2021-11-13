@@ -1,10 +1,9 @@
-<?php include('dbconnector.php');//let's include the db connection php file 
-$gameTitle = addslashes($_POST['gameTitle']);
-$developer = addslashes($_POST['gameDev']);
-$year = $_POST['GameYear'];
-$price = $_POST['GamePrice'];
-$img = $_POST['GameImage'];	
-$gameDescription = addslashes($_POST['gameDescription']);
+<?php include('dbconnector.php');//let's include the db connection php file
+$ProdName = addslashes($_POST['ProductName']);
+$ProdSupp = addslashes($_POST['ProductSupplier']);
+$ProdQuantity = $_POST['ProductQuantity'];
+$ProdPrice = $_POST['ProductPrice'];
+$ProdDesc = addslashes($_POST['ProductDescription']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +11,7 @@ $gameDescription = addslashes($_POST['gameDescription']);
 	<title>Add Game</title>
 </head>
 <body>
-	<?php 
+	<?php
 		/**$sqlcheck = "SELECT * from game WHERE gametitle = '$gameTitle'";
 	$r_sqlcheck = mysqli_query($dbcon, $sqlcheck);
 
@@ -20,7 +19,7 @@ $gameDescription = addslashes($_POST['gameDescription']);
 		echo "Game already exists.";
 	}
 	else{**/
-		$sql = "INSERT INTO game(developer, gametitle, description, year, price, img) VALUES ('$developer', '$gameTitle','$gameDescription', '$year', '$price', '$img')";
+	$sql = "INSERT INTO products(ProdName, Description, Supplier, Quantity, Cost) VALUES ('$ProdName', '$ProdDesc','$ProdSupp', '$ProdQuantity','$ProdPrice')";
 	$result = $dbcon->query($sql) or die ("Couldn't execute query.");
 	if($result){
 		echo "<meta http-equiv=\"refresh\" content=\"0; URL = viewGames.php\">";
