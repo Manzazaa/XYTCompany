@@ -38,7 +38,7 @@ include('../server.php'); ?>
     </ul>
 			</div>
 	<div id="invtitle">
-			<h2 style="color:#c7d5e0 "> Game Inventory</h2>
+			<h2 style="color:#c7d5e0 "> Product Inventory</h2>
 		</div>
 		<form method="POST" action="viewGames.php">
 			<input id="txtfld1" type="text" name="search" placeholder="Search" style="width: 250px; margin-bottom: 20px; margin-left: 800px;">
