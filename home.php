@@ -53,7 +53,7 @@ margin-top: 60px;
 			<h3 style="color: #66c0f4";>Admin <?php echo $_SESSION['AdminName'];?></h3>
 			<li><a href="">Home</a></li>
   			<li><a href="">Store</a></li>
-  			<li><a href="">Library</a></li>
+  			<li><a href="">Cart</a></li>
   			<li style="float:right"><a href="log-in.php">Logout</a></li>
   			<li><a href="SampleCrud/viewGames.php">Admin Controls</a></li>
 		</ul>

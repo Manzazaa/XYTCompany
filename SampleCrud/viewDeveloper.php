@@ -38,15 +38,15 @@ include('../server.php'); ?>
     </ul>
 			</div>
 <div id="invtitle">
-			<h2 style="color:#c7d5e0 "> Developer Inventory</h2>
+			<h2 style="color:#c7d5e0 "> Supplier</h2>
 		</div>
 
 <div class="designedtext">
 	<table style="margin-left: 175px; color: white;">
 		<thead>
 			<tr>
-				<th>Developer ID</th>
-				<th>Developer Name</th>
+				<th>Supplier ID</th>
+				<th>Supplier Name</th>
 				<th>Country</th>
 				<th>Action</th>
 			</tr>

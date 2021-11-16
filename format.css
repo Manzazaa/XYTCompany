@@ -13,6 +13,22 @@ a{
 	font-weight: 300;
  	color: #66c0f4;
 }
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin-bottom: 50px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 .navbar{
   list-style-type: none;
   margin: 0;
@@ -179,4 +195,19 @@ margin-bottom: 30px;
   margin-right: 970px;
   margin-left: 50px;
   border-radius: 4px;
+}
+.button2 {
+  background-color:#779800;
+  border: none;
+  color: white;
+  padding: 6px 35px;
+  text-align: center;
+  /*display: inline-block;*/
+  font-size: 13px;
+  border-radius: 2px;
+  transition-duration: 0.4s;
+}
+.button2:hover {
+  background-color:#a2c902; /* Green */
+  color: black;
 }
