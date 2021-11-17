@@ -32,13 +32,12 @@ array_push($_SESSION['cart'], $_GET['id']);//upon clicking, we get the id from t
 			<li style="color: #66c0f4; margin-left: 100px;margin-right: 190px"><h2>ORBIT Store</h2>
 			<li><a href="">Home</a></li>
   			<li><a href="">Store</a></li>
-  			<li><a href="userprofile.php"><?php echo $_SESSION['username'] ?></a></li>
   			<li><a href="">Library</a></li>
   			<li style="float:right"><a href="home.php?logout='1'">Logout</a></li>
   			<li style="float:right"><a href="cart.php">Cart </a></li>
 		</ul>
 		<div id="shoptitle">
-			<h2 style="color:#c7d5e0 "> Browse the most epicest Games</h2>
+			<h2 style="color:#c7d5e0 "> Browse the Store</h2>
 		</div>
 	</div>
 

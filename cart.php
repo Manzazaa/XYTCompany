@@ -41,7 +41,7 @@
         <li style="color: #66c0f4; margin-left: 100px;margin-right: 190px"><h2>ORBIT Store</h2>
         <li><a href="home.php">Home</a></li>
           <li><a href="home.php">Store</a></li>
-          <li><a href="userprofile.php"><?php echo $_SESSION['username'] ?></a></li>
+          <!-- <li><a href="userprofile.php"><?php echo $_SESSION['username'] ?></a></li> -->
           <li><a href="">Library</a></li>
           <li style="float:right"><a href="home.php?logout='1'">Logout</a></li>
           <li style="float:right"><a href="cart.php">Cart </a></li>
@@ -59,24 +59,25 @@
       <thead>
         <tr>
           <th>Your Cart</th>
-          <th>Game</th>
+          <th>Item</th>
           <th>Price (Php)</th>
           <th></th>
         </tr>
         </thead>
         <?php
-          $sql = "SELECT * from game WHERE gameID IN ($whereIn)";//we select all records from the game table where its values are in the numbers that are in the array
+          $sql = "SELECT * from products WHERE ProdID IN ($whereIn)";//we select all records from the game table where its values are in the numbers that are in the array
           $r_sql = $dbcon->query($sql);
           if (!empty($r_sql) && $r_sql->num_rows > 0) {//if the array is not empty and the rows are more than zero
           while ($row = $r_sql -> fetch_assoc()) {//while there is a row to be fetched?>
       <tbody>
         <tr>
-          <td><img src="<?php echo $row['img']?>"width=104 height=136></td><!-- echo the image of the game -->
-          <td><?php echo $row['gametitle']; ?></td>
-          <td>Php <?php echo $row['price']; ?></td>
+          <td></td>
+          <!-- <td><img src="<?php echo $row['img']?>"width=104 height=136></td>echo the image of the game -->
+          <td><?php echo $row['ProdName']; ?></td>
+          <td>Php <?php echo $row['Cost']; ?></td>
          
-           <?php $total+= $row['price'];//this takes all the values in the price column in the cart and adds them up together?>
-          <td><a href="removeFromCart.php?id=<?php echo $row['gameID']; ?>"style="text-decoration: none;">Remove</a>
+           <?php $total+= $row['Cost'];//this takes all the values in the price column in the cart and adds them up together?>
+          <td><a href="removeFromCart.php?id=<?php echo $row['ProdID']; ?>"style="text-decoration: none;">Remove</a>
         
         </tr>
       </tbody>
