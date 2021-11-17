@@ -1,6 +1,6 @@
 <?php include('server.php');
 $id = $_GET['id'];//we get the id from the url that we have set in the previous page
-$sql = "SELECT * FROM game WHERE gameID = '$id'";// then we select all the games that corresponds to that url
+$sql = "SELECT * FROM products WHERE ProdID = '$id'";// then we select all the games that corresponds to that url
 
 $result = $dbcon->query($sql);//we perform a query to find those games
 $row = $result->fetch_assoc();//and store them in the $row variable
@@ -11,7 +11,7 @@ $row = $result->fetch_assoc();//and store them in the $row variable
 <head>
 	<link rel="stylesheet" type="text/css" href="format.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-	<title> <?php echo $row['gametitle'] ?> | ORBIT Store</title>
+	<title> <?php echo $row['ProdName'] ?> | XYT Co.</title>
 	<style type="text/css">
 #gamepicdiv{
   margin-top: 130px;
@@ -64,8 +64,6 @@ margin-left: 60px;
 			<li style="color: #66c0f4; margin-left: 100px;margin-right: 190px"><h2>ORBIT Store</h2>
 			<li><a href="home.php">Home</a></li>
   			<li><a href="home.php">Store</a></li>
-  			<li><a href="userprofile.php"><?php echo $_SESSION['username'] ?></a></li>
-  			<li><a href="">Library</a></li>
   			<li style="float:right"><a href="home.php?logout='1'">Logout</a></li>
   			<li style="float:right"><a href="cart.php">Cart </a></li>
 		</ul>
@@ -73,20 +71,19 @@ margin-left: 60px;
 <div id="superdiv" class="designedtext">
 
 	<div id="gamepicdiv">
-		<img src="<?php echo $row['img']?>" width="320" height="430"><!--we display the corresponding image for the game-->
-	</div>
-
+		<!-- <img src="<?php echo $row['img']?>" width="320" height="430"><!--we display the corresponding image for the game-->
+	</div> -->
 <div id="descriptiondiv" style="color:#c7d5e0;"><!--division for the description of the game-->
-	<h1 style="text-align: left; "> <?php echo $row['gametitle'] ?> </h1>
+	<h1 style="text-align: left; "> <?php echo $row['ProdName'] ?> </h1>
 	<br>
-	<?php echo $row['description'] ?>
+	<?php echo $row['Description'] ?>
 	<br><br>
-	Developer: <?php echo $row['developer'];?>
+	Supplier: <?php echo $row['Supplier'];?>
 
 	<div id="gameprice"><!-- div for the price of the game -->
-		Buy <?php echo $row['gametitle'] ?><br><br>
+		Buy <?php echo $row['ProdName'] ?><br><br>
 		<form method="POST" action="addToCart.php?id=<?php echo"$id" ?>"><!--here, we set a specific id to the add to cart page action, where it takes our gameID as its id so that the next page knows that what's added in the cart is this specific game wtf is my english-->
-			P<?php echo $row['price']?><br>
+			P<?php echo $row['Cost']?><br>
 			<button class="button2" style="margin-top: 20px;">ADD TO CART</button>
 		</form>
 	</div>

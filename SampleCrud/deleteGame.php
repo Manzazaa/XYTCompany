@@ -2,7 +2,7 @@
 		//mysql connection here
 		include('dbconnector.php');
 		$id = $_GET['id'];
-		$sql = "Delete FROM game WHERE game.gameID ='$id'";
+		$sql = "Delete FROM products WHERE products.ProdID ='$id'";
 
 		$result = $dbcon->query($sql) or die ("Couldn't execute query.");
 	
