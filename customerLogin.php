@@ -28,7 +28,7 @@
 		<div  class="designedtext" id="logindiv">
 			<h2 style="color: white">Sign In</h2>
 			<?php include('server.php')?>
-			<p>Username:</p>
+			<p>Email:</p>
 			<input id="txtfld1" type="text" name="uname" required>
 			<p>Password:</p>
 			<input id="txtfld1" type="Password" name="pass" required>
