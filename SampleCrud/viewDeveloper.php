@@ -17,7 +17,6 @@ include('../server.php'); ?>
             <a href="#">ADD RECORD &#9662;</a>
             <ul class="dropdown">
                 <li><a href="addGame.php">Product</a></li>
-                <li><a href="addDeveloper.php">Developer</a></li>
             </ul>
         </li>
         <li>
@@ -45,28 +44,20 @@ include('../server.php'); ?>
 	<table style="margin-left: 175px; color: white;">
 		<thead>
 			<tr>
-				<th>Supplier ID</th>
 				<th>Supplier Name</th>
 				<th>Country</th>
-				<th>Action</th>
 			</tr>
 		</thead>
 		<?php
-			$sql = "SELECT * from developer";
+			$sql = "SELECT * from supplier";
 			$result = $dbcon->query($sql);
 			if ($result->num_rows>0){
 				while ($row = $result -> fetch_assoc()) {
 		?>
 		<tbody>
 			<tr>
-				<td><?php echo $row['developerid']; ?></td>
-				<td><?php echo $row['developerName']; ?></td>
-				<td><?php echo $row['address']; ?></td>
-			
-
-				<td><a href="editDeveloper.php?id=<?php echo $row['developerid']; ?>" style="text-decoration: none;">Update</a>
-				<a href="deleteDeveloper.php?id=<?php echo $row['developerid'];?>" style="text-decoration: none;">Delete</a></td>
-
+				<td><?php echo $row['Supplier']; ?></td>
+				<td><?php echo $row['Address']; ?></td>
 			</tr>
 		</tbody>
 	<?php }}?>
