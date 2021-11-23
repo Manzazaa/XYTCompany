@@ -1,7 +1,7 @@
 <?php include('SampleCrud/dbconnector.php');//let's include the db connection php file
 include('server.php');
-if (!isset($_SESSION['AdminName'])) {//if there is no session, go to log in page instead of the home page
-	header('location: log-in.php');
+if (!isset($_SESSION['username'])) {//if there is no session, go to log in page instead of the home page
+	header('location: staffLogin.php');
 }?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['AdminName'])) {//if there is no session, go to log in page
 <div> <!-- div for the nav bar -->
 		<ul class="navbar">
 			<li style="color: #66c0f4; margin-left: 100px;margin-right: 100px"><h1>XYT Co.</h1>
-			<h3 style="color: #66c0f4";>Admin <?php echo $_SESSION['AdminName'];?></h3>
+			<h3 style="color: #66c0f4";>Admin <?php echo $_SESSION['username'];?></h3>
 			<li><a href="">Home</a></li>
   			<li><a href="">Store</a></li>
   			<li><a href="cart.php">Cart</a></li>

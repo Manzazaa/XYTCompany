@@ -2,22 +2,24 @@
 include('SampleCrud/dbconnector.php');
 session_start();
 
-//this is for customerLogin
+//this is for staffLogin
 	if (isset($_POST['loginbtn'])){
 		$username = $_POST['uname'];
 		$Password = $_POST['pass'];
-		$err = array('error'=>'');
-		$sqlcheck = "SELECT FirstName, Email, pass FROM customer";
-		$r_sqlcheck = mysqli_query($dbcon, $sqlcheck);
-		$Customers = mysqli_fetch_all($r_sqlcheck, MYSQLI_ASSOC);
 
-		foreach ($Customers as $Customer) {
-	    if($_POST['uname'] == $Customer['Email'] and $_POST['pass'] == $Customer['pass']){
-	      $_SESSION['FirstName'] = $Customer['FirstName'];
-	      header("location:customerHome.php");
-	    }
-	  }
-	}
+		$sqlcheck = "SELECT * FROM admin WHERE Name ='$username' AND Pass = '$Password'";
+		$r_sqlcheck = mysqli_query($dbcon, $sqlcheck);
+
+        if(mysqli_num_rows($r_sqlcheck)==1){//if there exists one
+			$_SESSION['username']=$username;
+            header('location:home.php');
+			}else{
+				echo "Invalid combination.";
+			}
+		}
+		// else{
+		// 	
+		// }
 	//this is for logout
 	if (isset($_GET['logout'])){//if they press the logout button
 		//session_write_close();before logging out, this code saves the data from the session
