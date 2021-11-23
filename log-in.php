@@ -1,14 +1,12 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="format.css"/>
+	<link rel="stylesheet" href="loginNav.css">
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
 	<title>Login | XYT Company</title>
-	<style type="text/css">
-		#transactiondiv{
 
-		}
-	</style>
 </head>
 <body>
 	<div class="split left">
@@ -16,13 +14,11 @@
 			<h1>XYT Company</h1>
 		<div id="subtitlediv">
 			<h3>The leading international products distributor in the Philippines.</h3>
-
-			<br><br><br>
 			<h6>Join now get the best motorcycle parts, furniture supplies, <br>hardware supplies, and more!</h6>
 		<form action="sign-up.php" method="GET">
 			<button type="submit" class="button1">Join XYT Store</button>
 		</form>
-		<br><br>
+
 		<h6>Visit <a href="">FAQ</a></h6>
 		</div>
 	</div>
@@ -43,5 +39,6 @@
 		</div>
 		</form>
 	</div>
+	<?php include 'productCard.php'; ?>
 </body>
 </html>
