@@ -31,6 +31,15 @@ include('../server.php'); ?>
 
             </ul>
         </li>
+		<li>
+            <a href="#">Manage Employees &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="createEmployee.php">Create Employee</a></li>
+                <li><a href="viewDeveloper.php">View Employees</a></li>
+                
+
+            </ul>
+        </li>
         <li><a href="../home.php">Home</a></li>
 
         <li style="float:right">
