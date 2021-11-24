@@ -4,7 +4,7 @@ require_once 'php_action/db_connect.php';
 session_start();
 
 if(isset($_SESSION['userId'])) {
-	header('location: http://localhost/stock/dashboard.php');	
+	header('location: dashboard.php');	
 }
 
 $errors = array();
@@ -16,11 +16,11 @@ if($_POST) {
 
 	if(empty($username) || empty($password)) {
 		if($username == "") {
-			$errors[] = "Username is required";
+			$errors[] = "Username is required!";
 		} 
 
 		if($password == "") {
-			$errors[] = "Password is required";
+			$errors[] = "Password is required!";
 		}
 	} else {
 		$sql = "SELECT * FROM users WHERE username = '$username'";
@@ -39,13 +39,13 @@ if($_POST) {
 				// set session
 				$_SESSION['userId'] = $user_id;
 
-				header('location: http://localhost/stock/dashboard.php');	
+				header('location: dashboard.php');	
 			} else{
 				
-				$errors[] = "Incorrect username/password combination";
+				$errors[] = "Incorrect username/password combination!";
 			} // /else
 		} else {		
-			$errors[] = "Username doesnot exists";		
+			$errors[] = "Username does not exist!";		
 		} // /else
 	} // /else not empty username // password
 	

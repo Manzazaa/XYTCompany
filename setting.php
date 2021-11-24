@@ -13,12 +13,12 @@ $connect->close();
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 		  <li><a href="dashboard.php">Home</a></li>		  
-		  <li class="active">Setting</li>
+		  <li class="active">Settings</li>
 		</ol>
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-wrench"></i> Setting</div>
+				<div class="page-heading"> <i class="glyphicon glyphicon-wrench"></i> Settings</div>
 			</div> <!-- /panel-heading -->
 
 			<div class="panel-body">
