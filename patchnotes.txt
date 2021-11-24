@@ -1,0 +1,32 @@
+Dupreeh 1.0 (3/3/20)
+	-Added homepage
+	-Navigation bar
+
+Dupreeh 1.1 (4/3/20)
+	-CRUD Operations on Admin
+		-Game, User, and Developer tables
+
+Dupreeh 1.2 (4/3/20)
+	-Dynamic Add game method using database
+
+Dupreeh 1.3 (7/3/20)
+	-CRUD for the user
+		-Delete account and update password
+
+Dupreeh 1.4(8/3/20)
+	-Dynamic page viewing of games using
+	 just 1 php file and retrieving respective data
+	-Updated ADD games and EDIT games functions in admin perspective
+		*text field feature for adding game descriptions
+	-Add to cart function
+		-Add and remove items from the cart
+
+Dupreeh 1.4.5 (9/3/20)
+	-Added transaction function
+
+Dupreeh 1.5 (12/3/2020)
+	-Transaction CRUD
+
+Dupreeh 1.6 (14/3/2020)
+	-Search function
+	-Modified homepage
