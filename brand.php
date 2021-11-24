@@ -94,7 +94,7 @@
     	<form class="form-horizontal" id="editBrandForm" action="php_action/editBrand.php" method="POST">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-edit"></i> Edit Brand</h4>
+	        <h4 class="modal-title"><i class="fa fa-edit"></i> Edit Supplier</h4>
 	      </div>
 	      <div class="modal-body">
 
@@ -107,7 +107,7 @@
 
 		      <div class="edit-brand-result">
 		      	<div class="form-group">
-		        	<label for="editBrandName" class="col-sm-3 control-label">Brand Name: </label>
+		        	<label for="editBrandName" class="col-sm-3 control-label">Supplier Name: </label>
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
 					      <input type="text" class="form-control" id="editBrandName" placeholder="Brand Name" name="editBrandName" autocomplete="off">
@@ -151,10 +151,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Remove Brand</h4>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Supplier Brand</h4>
       </div>
       <div class="modal-body">
-        <p>Do you really want to remove ?</p>
+        <p>Do you really want to remove this supplier ?</p>
       </div>
       <div class="modal-footer removeBrandFooter">
         <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
