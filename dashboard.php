@@ -96,7 +96,7 @@ $connect->close();
 		  </div>
 
 		  <div class="cardContainer">
-		    <p> <i class="glyphicon glyphicon-usd"></i> Total Revenue</p>
+		    <p> <i class=""></i>₱ Total Revenue</p>
 		  </div>
 		</div> 
 
