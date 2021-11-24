@@ -82,7 +82,7 @@ if($_POST) {
 			<div class="col-md-5 col-md-offset-4">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">Login Admin </h3>
+						<h3 class="panel-title">Login Inventory </h3>
 					</div>
 					<div class="panel-body">
 

@@ -32,10 +32,10 @@
 	<script src="assests/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
-<body style="background-color: #c7d5e0">
+<body style="background-color: #B7BCBD">
 
 
-	<nav class="navbar navbar-static-top" style="background-color: #2a475e">
+	<nav class="navbar navbar-static-top" style="background-color: #33F0FF">
 		<div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -55,7 +55,7 @@
 
       	<li id="navDashboard"><a href="index.php"><i class="glyphicon glyphicon-list-alt"></i>  Dashboard</a></li>        
         
-        <li id="navBrand"><a href="brand.php"><i class="glyphicon glyphicon-btc"></i>  Suppliers</a></li>        
+        <li id="navBrand"><a href="brand.php"><i class="glyphicon glyphicon-btc"></i>  Brand</a></li>        
 
         <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Category</a></li>        
 
