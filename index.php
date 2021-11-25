@@ -55,7 +55,7 @@ if($_POST) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stock Management System</title>
+	<title>XYT Company</title>
 
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="assests/bootstrap/css/bootstrap.min.css">
@@ -63,6 +63,9 @@ if($_POST) {
 	<link rel="stylesheet" href="assests/bootstrap/css/bootstrap-theme.min.css">
 	<!-- font awesome -->
 	<link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
   <!-- custom css -->
   <link rel="stylesheet" href="custom/css/custom.css">	
@@ -82,7 +85,7 @@ if($_POST) {
 			<div class="col-md-5 col-md-offset-4">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">Login Admin </h3>
+						<h3 class="panel-title">ADMIN LOGIN </h3>
 					</div>
 					<div class="panel-body">
 

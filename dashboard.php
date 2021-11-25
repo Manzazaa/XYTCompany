@@ -53,7 +53,7 @@ $connect->close();
 		<div class="col-md-4">
 			<div class="panel panel-info">
 			<div class="panel-heading">
-				<a href="orders.php?o=manord" style="text-decoration:none;color:black;">
+				<a href="orders.php?o=manord" style="text-decoration:none;color:#c7d5e0;">
 					Total Orders
 					<span class="badge pull pull-right"><?php echo $countOrder; ?></span>
 				</a>

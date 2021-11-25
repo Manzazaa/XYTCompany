@@ -337,7 +337,7 @@
 
       	<div class="removeProductMessages"></div>
 
-        <p>Do you really want to remove ?</p>
+        <p>Do you really want to remove?</p>
       </div>
       <div class="modal-footer removeProductFooter">
         <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
