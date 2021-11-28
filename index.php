@@ -1,9 +1,9 @@
-p<?php 
+<?php 
 require_once 'php_action/db_connect.php';
 
 session_start();
 
-if(isset($_SESSION['userId'])) {
+if(isset($_SESSION['userId'])) {  //if a session is in place, go to home dash
 	header('location: dashboard.php');	
 }
 
@@ -30,15 +30,15 @@ if($_POST) {
 			$password = md5($password);
 			// exists
 			$mainSql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-			$mainResult = $connect->query($mainSql);
+			$mainResult = $connect->query($mainSql); 
 
 			if($mainResult->num_rows == 1) {
-				$value = $mainResult->fetch_assoc();
-				$user_id = $value['user_id'];
+				$value = $mainResult->fetch_assoc(); //if there exists a row that satisfies both conditions
+				$user_id = $value['user_id']; 
 
 				// set session
 				$_SESSION['userId'] = $user_id;
-
+				//PLAN: Based on the employee type, the header will be different.
 				header('location: dashboard.php');	
 			} else{
 				
