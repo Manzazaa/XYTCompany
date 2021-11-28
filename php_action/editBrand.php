@@ -10,7 +10,7 @@ if($_POST) {
   $brandStatus = $_POST['editBrandStatus']; 
   $brandId = $_POST['brandId'];
 
-	$sql = "UPDATE brands SET brand_name = '$brandName', brand_active = '$brandStatus' WHERE brand_id = '$brandId'";
+	$sql = "UPDATE suppliers SET supplier_name = '$brandName', supplier_active = '$brandStatus' WHERE supplier_id = '$brandId'";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

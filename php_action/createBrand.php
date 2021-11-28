@@ -6,10 +6,10 @@ $valid['success'] = array('success' => false, 'messages' => array());
 
 if($_POST) {	
 
-	$brandName = $_POST['brandName'];
-  $brandStatus = $_POST['brandStatus']; 
+	$supplierName = $_POST['brandName'];
+  $supplierStatus = $_POST['brandStatus']; 
 
-	$sql = "INSERT INTO brands (brand_name, brand_active, brand_status) VALUES ('$brandName', '$brandStatus', 1)";
+	$sql = "INSERT INTO suppliers (supplier_name, supplier_active, supplier_status) VALUES ('$supplierName', '$supplierStatus', 1)";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;
