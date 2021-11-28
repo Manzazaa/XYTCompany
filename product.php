@@ -102,7 +102,7 @@
 				      <select class="form-control" id="brandName" name="brandName">
 				      	<option value="">~~SELECT~~</option>
 				      	<?php 
-				      	$sql = "SELECT supplier_id, supplier_name, supplier_active, supplier_status FROM suppliers WHERE supplier_status = 1 AND supplier_active = 1";
+				      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
 								$result = $connect->query($sql);
 
 								while($row = $result->fetch_array()) {
@@ -260,7 +260,7 @@
 						      <select class="form-control" id="editBrandName" name="editBrandName">
 						      	<option value="">~~SELECT~~</option>
 						      	<?php 
-						      	$sql = "SELECT supplier_id, supplier_name, supplier_active, supplier_status FROM suppliers WHERE supplier_status = 1 AND supplier_active = 1";
+						      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
 										$result = $connect->query($sql);
 
 										while($row = $result->fetch_array()) {

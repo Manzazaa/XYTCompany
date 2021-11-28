@@ -5,18 +5,18 @@ require_once 'core.php';
 
 $valid['success'] = array('success' => false, 'messages' => array());
 
-$supplierId = $_POST['brandId'];
+$brandId = $_POST['brandId'];
 
-if($supplierId) { 
+if($brandId) { 
 
- $sql = "UPDATE suppliers SET supplier_status = 2 WHERE supplier_id = {$supplierId}";
+ $sql = "UPDATE brands SET brand_status = 2 WHERE brand_id = {$brandId}";
 
  if($connect->query($sql) === TRUE) {
  	$valid['success'] = true;
 	$valid['messages'] = "Successfully Removed";		
  } else {
  	$valid['success'] = false;
- 	$valid['messages'] = "Error while removing the supplier";
+ 	$valid['messages'] = "Error while remove the brand";
  }
  
  $connect->close();

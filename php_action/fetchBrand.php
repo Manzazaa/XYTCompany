@@ -2,7 +2,7 @@
 
 require_once 'core.php';
 
-$sql = "SELECT supplier_id, supplier_name, supplier_active, supplier_status FROM suppliers WHERE supplier_status = 1";
+$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1";
 $result = $connect->query($sql);
 
 $output = array('data' => array());
