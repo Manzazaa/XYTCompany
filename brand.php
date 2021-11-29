@@ -110,7 +110,7 @@
 		        	<label for="editBrandName" class="col-sm-3 control-label">Supplier Name: </label>
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="editBrandName" placeholder="Brand Name" name="editBrandName" autocomplete="off">
+					      <input type="text" class="form-control" id="editBrandName" placeholder="Supplier Name" name="editBrandName" autocomplete="off">
 					    </div>
 		        </div> <!-- /form-group-->	         	        
 		        <div class="form-group">
