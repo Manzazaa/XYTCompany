@@ -64,9 +64,9 @@ if($_GET['o'] == 'add') {
   		<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createOrderForm">
 
 			  <div class="form-group">
-			    <label for="orderDate" class="col-sm-2 control-label">Order Date</label>
+			    <label for="orderDate" class="col-sm-2 control-label">Order Date</label> 
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="orderDate" name="orderDate" autocomplete="off" />
+			      <input type="text" disabled class="form-control" id="orderDate" name="orderDate" autocomplete="off" value="<?php echo date('m') .'/'.date('d').'/'.date('Y'); ?>" />
 			    </div>
 			  </div> <!--/form-group-->
 			  <div class="form-group">
@@ -148,7 +148,7 @@ if($_GET['o'] == 'add') {
 				    </div>
 				  </div> <!--/form-group-->			  
 				  <div class="form-group">
-				    <label for="vat" class="col-sm-3 control-label">VAT 13%</label>
+				    <label for="vat" class="col-sm-3 control-label">VAT 12%</label>
 				    <div class="col-sm-9">
 				      <input type="text" class="form-control" id="vat" name="vat" disabled="true" />
 				      <input type="hidden" class="form-control" id="vatValue" name="vatValue" />
@@ -202,11 +202,11 @@ if($_GET['o'] == 'add') {
 				    </div>
 				  </div> <!--/form-group-->							  
 				  <div class="form-group">
-				    <label for="clientContact" class="col-sm-3 control-label">Payment Status</label>
-				    <div class="col-sm-9">
+				    <label for="clientContact" class="col-sm-3 control-label" hidden>Payment Status</label>
+				    <div class="col-sm-9" hidden>
 				      <select class="form-control" name="paymentStatus" id="paymentStatus">
 				      	<option value="">~~SELECT~~</option>
-				      	<option value="1">Full Payment</option>
+				      	<option value="1" selected>Full Payment</option>
 				      	<option value="2">Advance Payment</option>
 				      	<option value="3">No Payment</option>
 				      </select>
@@ -366,7 +366,7 @@ if($_GET['o'] == 'add') {
 				    </div>
 				  </div> <!--/form-group-->			  
 				  <div class="form-group">
-				    <label for="vat" class="col-sm-3 control-label">VAT 13%</label>
+				    <label for="vat" class="col-sm-3 control-label">VAT 12%</label>
 				    <div class="col-sm-9">
 				      <input type="text" class="form-control" id="vat" name="vat" disabled="true" value="<?php echo $data[5] ?>"  />
 				      <input type="hidden" class="form-control" id="vatValue" name="vatValue" value="<?php echo $data[5] ?>"  />
@@ -426,9 +426,9 @@ if($_GET['o'] == 'add') {
 				    </div>
 				  </div> <!--/form-group-->							  
 				  <div class="form-group">
-				    <label for="clientContact" class="col-sm-3 control-label">Payment Status</label>
-				    <div class="col-sm-9">
-				      <select class="form-control" name="paymentStatus" id="paymentStatus">
+				    <label for="clientContact" class="col-sm-3 control-label" hidden>Payment Status</label>
+				    <div class="col-sm-9" hidden>
+				      <select class="form-control" name="paymentStatus" id="paymentStatus" hidden>
 				      	<option value="">~~SELECT~~</option>
 				      	<option value="1" <?php if($data[12] == 1) {
 				      		echo "selected";
