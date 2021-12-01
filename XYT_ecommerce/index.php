@@ -1,6 +1,29 @@
 <?php
 session_start();
 include 'dbConn.php';
+
+if (isset($_POST['catHardware'])) {
+  $_SESSION['categorySelect'] = 'Hardwares';
+};
+if (isset($_POST['submit-test'])) {
+  $_SESSION['categorySelect'] = 'Autoparts';
+  header("Location: product-list.php");
+};
+if (isset($_POST['catFurniture'])) {
+  $_SESSION['categorySelect'] = 'Furnitures';
+};
+if (isset($_POST['catLightings'])) {
+  $_SESSION['categorySelect'] = 'Lightings';
+};
+if (isset($_POST['catMotoParts'])) {
+  $_SESSION['categorySelect'] = 'Motorcycle Parts';
+};
+if (isset($_POST['catPlasticWares'])) {
+  $_SESSION['categorySelect'] = 'Plastic Wares';
+};
+if (isset($_POST['catElectronics'])) {
+  $_SESSION['categorySelect'] = 'Electronics';
+};
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +46,16 @@ include 'dbConn.php';
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <style media="screen">
+        button[name="submit-test"] {
+            background: transparent;
+            border: 0 none;
+            color: blue;
+            text-decoration: underline;
+            font: inherit;
+            cursor: pointer;
+          }
+        </style>
     </head>
 
     <body>
@@ -63,6 +96,7 @@ include 'dbConn.php';
         <!-- Bottom Bar End -->
 
         <!-- Main Slider Start -->
+        <form action="index.php" method="post">
         <div class="header">
             <div class="container-fluid">
                 <div class="row">
@@ -73,29 +107,31 @@ include 'dbConn.php';
                                     <a class="nav-link" href="#"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-cogs"></i>Auto Parts</a>
+                                    <button name="submit-test" type="submit" class="nav-link" ><i class="fa fa-cogs"></i>Auto Parts</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-motorcycle"></i>Motorcycle Parts</a>
+                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-motorcycle"></i>Motorcycle Parts</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-chair"></i>Furniture</a>
+                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-chair"></i>Furniture</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-lightbulb"></i>Lightings</a>
+                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-lightbulb"></i>Lightings</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-beer"></i>Plastic Wares</a>
+                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-beer"></i>Plastic Wares</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-cog"></i>Electronics</a>
+                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-cog"></i>Electronics</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-wrench"></i>Hardware</a>
+                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-wrench"></i>Hardware</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
+                  </form>
+
                     <div class="col-md-6">
                         <div class="header-slider normal-slider">
                             <div class="header-slider-item">
