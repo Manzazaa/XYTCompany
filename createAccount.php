@@ -23,46 +23,45 @@ $connect->close();
 
 			<div class="panel-body">
 
-				<form action="php_action/changePassword.php" method="post" class="form-horizontal" id="changePasswordForm">
+				<form action="php_action/createEmployeeAccount.php" method="post" class="form-horizontal" id="signUpForm">
 					<fieldset>
 						<legend>Employee Biodata</legend>
 
-						<div class="changePasswordMessages"></div>
-
-						
+						<div class="changeUsenrameMessages">
+						</div>
 
                       <div class="form-group">
-					    <label for="password" class="col-sm-2 control-label">First Name</label>
+					    <label for="firstName" class="col-sm-2 control-label">First Name</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="username" name="password" placeholder="First Name">
+					      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
 					    </div>
 					  </div>
 
                       <div class="form-group">
-					    <label for="password" class="col-sm-2 control-label">Last Name</label>
+					    <label for="lastName" class="col-sm-2 control-label">Last Name</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="username" name="password" placeholder="Last Name">
+					      <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
 					    </div>
 					  </div>
 
                       <div class="form-group">
 					    <label for="password" class="col-sm-2 control-label">Email</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="username" name="password" placeholder="Last Name">
+					      <input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required>
 					    </div>
 					  </div>
 
                       <div class="form-group">
 					    <label for="password" class="col-sm-2 control-label">Date of Birth</label>
 					    <div class="col-sm-10">
-					      <input type="date" class="form-control" id="username" name="password" placeholder="Username">
+					      <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="Date of birth" required>
 					    </div>
 					  </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-2 control-label">Employee Type</label>
+                        <label for="" class="col-sm-2 control-label" required>Employee Type</label>
                         <div class="col-sm-10">
-                        <select class="form-control" name="paymentStatus" id="paymentStatus">
+                        <select class="form-control" name="employeeType" id="employeeType">
                             <option value="">Select Employee Type</option>
                             <option value="0">0 (SUPER ADMINISTRATIVE)</option>
                             <option value="1">1 (ADMINISTRATIVE)</option>
@@ -79,28 +78,27 @@ $connect->close();
                       <div class="form-group">
 					    <label for="password" class="col-sm-2 control-label">Username</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="username" name="password" placeholder="Username" autocomplete="off">
+					      <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" required>
 					    </div>
 					  </div>
 
                       <div class="form-group">
 					    <label for="npassword" class="col-sm-2 control-label">Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="New Password">
+					      <input type="password" class="form-control" id="password" name="password" placeholder="New Password" required>
 					    </div>
 					  </div>
 
 					  <div class="form-group">
 					    <label for="cpassword" class="col-sm-2 control-label">Confirm Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password">
+					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" required>
 					    </div>
 					  </div>
                 
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					    	<input type="hidden" name="user_id" id="user_id" value="<?php echo $result['user_id'] ?>" /> 
-					      <button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok-sign"></i> Create Account </button>
+					      <button type="submit" class="btn btn-primary" id = "register" name="register"> <i class="glyphicon glyphicon-ok-sign"></i> Create Account </button>
 					      
 					    </div>
 					  

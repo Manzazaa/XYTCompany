@@ -61,7 +61,7 @@ $connect->close();
 					  </div>
 
 					  <div class="form-group">
-					    <label for="npassword" class="col-sm-2 control-label">New password</label>
+					    <label for="npassword" class="col-sm-2 control-label">New Password</label>
 					    <div class="col-sm-10">
 					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="New Password">
 					    </div>
