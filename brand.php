@@ -56,7 +56,18 @@
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control" id="brandName" placeholder="Supplier Name" name="brandName" autocomplete="off">
 				    </div>
-	        </div> <!-- /form-group-->	         	        
+	        </div> <!-- /form-group-->	    
+
+	        <div id="add-brand-messages"></div>
+
+	        <div class="form-group">
+	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <textarea class="form-control" id="supplierDetails" placeholder="Supplier Details" name="supplierDetails" autocomplete="off">
+				      	</textarea>
+				    </div>
+	        </div> <!-- /form-group-->	     	        
 	        <div class="form-group">
 	        	<label for="brandStatus" class="col-sm-3 control-label">Status: </label>
 	        	<label class="col-sm-1 control-label">: </label>
@@ -112,7 +123,19 @@
 					    <div class="col-sm-8">
 					      <input type="text" class="form-control" id="editBrandName" placeholder="Supplier Name" name="editBrandName" autocomplete="off">
 					    </div>
-		        </div> <!-- /form-group-->	         	        
+		        </div> <!-- /form-group-->	
+
+		        <div id="add-brand-messages"></div>
+
+	        <div class="form-group">
+	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <textarea class="form-control" id="editsupplierDetails" name="editsupplierDetails" autocomplete="off">
+				      	</textarea>
+				    </div>
+	        </div> <!-- /form-group-->
+
 		        <div class="form-group">
 		        	<label for="editBrandStatus" class="col-sm-3 control-label">Status: </label>
 		        	<label class="col-sm-1 control-label">: </label>

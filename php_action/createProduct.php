@@ -7,7 +7,6 @@ $valid['success'] = array('success' => false, 'messages' => array());
 if($_POST) {	
 
 	$productName 		= $_POST['productName'];
-  // $productImage 	= $_POST['productImage'];
   $quantity 			= $_POST['quantity'];
   $rate 					= $_POST['rate'];
   $brandName 			= $_POST['brandName'];
