@@ -2,7 +2,7 @@
 include 'dbConn.php';
 
 if(isset($_SESSION['categorySelect'])){
-  $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE categories = ".$_SESSION['categorySelect']."";
+  $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE categories_id = ".$_SESSION['categorySelect']."";
 
 }else {
   $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE status = 1";
@@ -11,7 +11,7 @@ if(isset($_SESSION['categorySelect'])){
 $result = $conn->query($sqlGetImage);
 $output = array('data' => array());
 
-if($result->num_rows > 0) {
+if(!empty($result) && $result->num_rows > 0) {
 
  // $row = $result->fetch_array();
  $prodDisp = "";
@@ -52,5 +52,7 @@ if($result->num_rows > 0) {
 
   echo $prodDisp;
  }
+ unset($_SESSION['categorySelect']);
 }
+
  ?>

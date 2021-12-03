@@ -100,7 +100,7 @@ session_start();
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>₱99</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -118,7 +118,7 @@ session_start();
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>₱99</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -136,7 +136,7 @@ session_start();
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>₱99</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -154,7 +154,7 @@ session_start();
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>₱99</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -172,7 +172,7 @@ session_start();
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>₱99</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>

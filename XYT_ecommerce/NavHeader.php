@@ -6,7 +6,7 @@ if (isset($_SESSION['fname'])) {
   $navUserIcon = '<p style="font-size:20px; color:white; margin-top:5px"><i color="white" class="fa fa-user fa-2x"></i><b> Hello '.$_SESSION['fname'].'</b></p>';
   $navUserDisp = '<a href="login.php" class="nav-item nav-link">Logout</a>';
 }else {
-  session_destroy();
+  //session_destroy();
   $navUserDisp = '<div class="nav-item dropdown">
                       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                   <div class="dropdown-menu">

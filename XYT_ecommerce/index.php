@@ -1,28 +1,35 @@
 <?php
+
 session_start();
 include 'dbConn.php';
 
 if (isset($_POST['catHardware'])) {
-  $_SESSION['categorySelect'] = 'Hardwares';
+  $_SESSION['categorySelect'] = 9;
+  header("Location: product-list.php");
 };
-if (isset($_POST['submit-test'])) {
-  $_SESSION['categorySelect'] = 'Autoparts';
+if (isset($_POST['catAuto'])) {
+  $_SESSION['categorySelect'] = 10;
   header("Location: product-list.php");
 };
 if (isset($_POST['catFurniture'])) {
-  $_SESSION['categorySelect'] = 'Furnitures';
+  $_SESSION['categorySelect'] = 12 ;
+  header("Location: product-list.php");
 };
 if (isset($_POST['catLightings'])) {
-  $_SESSION['categorySelect'] = 'Lightings';
+  $_SESSION['categorySelect'] = 15;
+  header("Location: product-list.php");
 };
 if (isset($_POST['catMotoParts'])) {
-  $_SESSION['categorySelect'] = 'Motorcycle Parts';
+  $_SESSION['categorySelect'] = 14;
+  header("Location: product-list.php");
 };
 if (isset($_POST['catPlasticWares'])) {
-  $_SESSION['categorySelect'] = 'Plastic Wares';
+  $_SESSION['categorySelect'] = 16;
+  header("Location: product-list.php");
 };
 if (isset($_POST['catElectronics'])) {
-  $_SESSION['categorySelect'] = 'Electronics';
+  $_SESSION['categorySelect'] = 11;
+  header("Location: product-list.php");
 };
  ?>
 <!DOCTYPE html>
@@ -47,11 +54,52 @@ if (isset($_POST['catElectronics'])) {
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <style media="screen">
-        button[name="submit-test"] {
+        button[name="catAuto"] {
             background: transparent;
             border: 0 none;
-            color: blue;
-            text-decoration: underline;
+
+            font: inherit;
+            cursor: pointer;
+          }
+        button[name="catMotoParts"] {
+            background: transparent;
+            border: 0 none;
+
+            font: inherit;
+            cursor: pointer;
+          }
+          button[name="catFurniture"] {
+            background: transparent;
+            border: 0 none;
+
+            font: inherit;
+            cursor: pointer;
+          }
+          button[name="catLightings"] {
+            background: transparent;
+            border: 0 none;
+
+            font: inherit;
+            cursor: pointer;
+          }
+          button[name="catPlasticWares"] {
+            background: transparent;
+            border: 0 none;
+
+            font: inherit;
+            cursor: pointer;
+          }
+          button[name="catElectronics"] {
+            background: transparent;
+            border: 0 none;
+
+            font: inherit;
+            cursor: pointer;
+          }
+          button[name="catHardware"] {
+            background: transparent;
+            border: 0 none;
+        
             font: inherit;
             cursor: pointer;
           }
@@ -107,25 +155,25 @@ if (isset($_POST['catElectronics'])) {
                                     <a class="nav-link" href="#"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <button name="submit-test" type="submit" class="nav-link" ><i class="fa fa-cogs"></i>Auto Parts</button>
+                                    <button name="catAuto" type="submit" class="nav-link" ><i class="fa fa-cogs"></i>Auto Parts</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-motorcycle"></i>Motorcycle Parts</a>
+                                    <button name="catMotoParts" type="submit" class="nav-link" ><i class="fa fa-motorcycle"></i>Motorcycle Parts</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-chair"></i>Furniture</a>
+                                    <button class="nav-link" name="catFurniture" type="submit" ><i class="fa fa-chair"></i>Furniture</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-lightbulb"></i>Lightings</a>
+                                    <button class="nav-link" name="catLightings" type="submit" ><i class="fa fa-lightbulb"></i>Lightings</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-beer"></i>Plastic Wares</a>
+                                    <button class="nav-link" name="catPlasticWares" type="submit" ><i class="fa fa-beer"></i>Plastic Wares</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-cog"></i>Electronics</a>
+                                    <button class="nav-link" name="catElectronics" type="submit" ><i class="fa fa-cog"></i>Electronics</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product-list.php" ><i class="fa fa-wrench"></i>Hardware</a>
+                                    <button class="nav-link" name="catHardware" type="submit" ><i class="fa fa-wrench"></i>Hardware</button>
                                 </li>
                             </ul>
                         </nav>
