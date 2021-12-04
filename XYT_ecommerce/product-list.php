@@ -1,5 +1,60 @@
 <?php
 session_start();
+
+if(isset($_POST['btnFilters'])) {
+  if (!empty($_POST['prodCat'])) {
+    switch ($_POST['prodCat']) {
+      case 'ddAuto':
+        $_SESSION['categorySelect'] = 10;
+        break;
+      case 'ddHardwares':
+        $_SESSION['categorySelect'] = 9;
+        break;
+      case 'ddMoto':
+        $_SESSION['categorySelect'] = 14;
+        break;
+      case 'ddLighting':
+        $_SESSION['categorySelect'] = 15;
+        break;
+      case 'ddFurniture':
+        $_SESSION['categorySelect'] = 12;
+        break;
+      case 'ddPlastic':
+        $_SESSION['categorySelect'] = 16;
+        break;
+      case 'ddElectronics':
+        $_SESSION['categorySelect'] = 11;
+        break;
+    }
+  }
+
+  if (!empty($_POST['prodPrice'])) {
+    switch ($_POST['prodPrice']) {
+      case '500':
+        $_SESSION['priceRange'] = "rate <= 500";
+        break;
+      case '1500':
+        $_SESSION['priceRange'] = "rate BETWEEN 500 AND 1500";
+        break;
+      case '3000':
+        $_SESSION['priceRange'] = "rate BETWEEN 1500 AND 3000";
+        break;
+      case '8000':
+        $_SESSION['priceRange'] = "rate BETWEEN 3000 AND 8000";
+        break;
+      case '12000':
+        $_SESSION['priceRange'] = "rate BETWEEN 8000 AND 12000";
+        break;
+      case '12001':
+        $_SESSION['priceRange'] = "rate BETWEEN 12000 AND 100000";
+        break;
+    }
+  }
+
+  if (!empty($_POST['prodBrand'])) {
+    $_SESSION['prodBrand'] = $_POST['prodBrand'];
+  }
+}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +94,7 @@ session_start();
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
+                    <?php include 'searchDisplay.php' ?>
                     <div class="col-md-3">
                         <div class="user">
                             <a href="wishlist.php" class="btn wishlist">
@@ -77,7 +127,7 @@ session_start();
         <div class="product-view">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="product-view-top">
@@ -88,40 +138,53 @@ session_start();
                                                 <button><i class="fa fa-search"></i></button>
                                             </div>
                                         </div>-->
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="product-short">
                                                 <div class="dropdown">
-                                                    <div class="dropdown-toggle" data-toggle="dropdown">Category</div>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">Auto Parts</a>
-                                                        <a href="#" class="dropdown-item">Motorcycle Parts</a>
-                                                        <a href="#" class="dropdown-item">Furniture</a>
-                                                        <a href="#" class="dropdown-item">Lightings</a>
-                                                        <a href="#" class="dropdown-item">Plastic Wares</a>
-                                                        <a href="#" class="dropdown-item">Electronics</a>
-                                                        <a href="#" class="dropdown-item">Hardware</a>
-                                                    </div>
+                                                  <form action="product-list.php" method="post">
+                                                    <select name="prodCat"class="dropdown-toggle">
+                                                        <option value="" disabled selected>Choose option</option>
+                                                        <option class="dropdown-item" value="ddAuto">Auto Parts</option>
+                                                        <option  class="dropdown-item" value="ddMoto">Motorcycle Parts</option>
+                                                        <option  class="dropdown-item" value="ddFurniture">Furnitures</option>
+                                                        <option  class="dropdown-item" value="ddLighting">Lightings</option>
+                                                        <option  class="dropdown-item" value="ddPlastic">Plastic Wares</option>
+                                                        <option  class="dropdown-item" value="ddElectronics">Electronics</option>
+                                                        <option  class="dropdown-item" value="ddHardwares">Hardwares</option>
+                                                    </select>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="product-price-range">
                                                 <div class="dropdown">
-                                                    <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">₱0 to ₱500</a>
-                                                        <a href="#" class="dropdown-item">₱500 to ₱1500</a>
-                                                        <a href="#" class="dropdown-item">₱1500 to ₱3000</a>
-                                                        <a href="#" class="dropdown-item">₱3000 to ₱8000</a>
-                                                        <a href="#" class="dropdown-item">₱8000 to ₱12000</a>
-                                                        <a href="#" class="dropdown-item">₱12000 to ₱15000</a>
-                                                        <a href="#" class="dropdown-item">₱15000 to ₱20000</a>
-                                                        <a href="#" class="dropdown-item">₱20000 above</a>
-
-                                                    </div>
+                                                  <select name="prodPrice" class="dropdown-toggle">
+                                                      <option value="" disabled selected>Price Range</option>
+                                                      <option class="dropdown-item" value="500">₱1 - ₱500</option>
+                                                      <option  class="dropdown-item" value="1500">₱500 - ₱1500</option>
+                                                      <option  class="dropdown-item" value="3000">₱1500 - ₱3000</option>
+                                                      <option  class="dropdown-item" value="8000">₱3000 - ₱8000</option>
+                                                      <option  class="dropdown-item" value="12000">₱8000 - ₱12000</option>
+                                                      <option  class="dropdown-item" value="12001">₱12000 above</option>
+                                                  </select>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="product-price-range">
+                                                <div class="dropdown">
+                                                  <select name="prodBrand" class="dropdown-toggle">
+                                                      <option value="" disabled selected>Brands</option>
+                                                      <?php include 'brandList-Display.php' ?>
+                                                  </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <input class="btn"type="submit" name="btnFilters" value="Apply Filter">
+                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -256,16 +319,16 @@ session_start();
                             </div>
                         </div>-->
 
-                        <div class="sidebar-widget brands">
+                        <!--<div class="sidebar-widget brands">
                             <h2 class="title">Our Brands</h2>
                             <ul>
-                                <li><a href="#">Galaxy and Global Hardwares</a><span>(45)</span></li>
-                                <li><a href="#">Webike Japan</a><span>(34)</span></li>
-                                <li><a href="#">Keihin Japan</a><span>(67)</span></li>
-                                <li><a href="#">Samya</a><span>(74)</span></li>
-                                <li><a href="#">Mandaue Ph</a><span>(89)</span></li>
+                                <li><a href="product-list.php">Galaxy and Global Hardwares</a><span>(45)</span></li>
+                                <li><a href="product-list.php">Webike Japan</a><span>(34)</span></li>
+                                <li><a href="product-list.php">Keihin Japan</a><span>(67)</span></li>
+                                <li><a href="product-list.php">Samya</a><span>(74)</span></li>
+                                <li><a href="product-list.php">Mandaue Ph</a><span>(89)</span></li>
                             </ul>
-                        </div>
+                        </div>-->
 
                         <!--<div class="sidebar-widget tag">
                             <h2 class="title">Tags Cloud</h2>

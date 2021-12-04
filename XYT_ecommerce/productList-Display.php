@@ -1,12 +1,39 @@
 <?php
-include 'dbConn.php';
+require_once 'dbConn.php';
 
-if(isset($_SESSION['categorySelect'])){
-  $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE categories_id = ".$_SESSION['categorySelect']."";
 
-}else {
-  $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE status = 1";
+  if (!isset($_SESSION['categorySelect']) && !isset($_SESSION['priceRange']) && !isset($_SESSION['prodBrand']) && !isset($_SESSION['searchInput'])) {
+
+    $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE status = 1";
+
+  }elseif (isset($_SESSION['categorySelect']) && isset($_SESSION['priceRange'])){
+      $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE categories_id = ".$_SESSION['categorySelect']." AND ".$_SESSION['priceRange']."";
+
+  }elseif (isset($_SESSION['categorySelect']) && isset($_SESSION['prodBrand'])) {
+      $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE categories_id = ".$_SESSION['categorySelect']." AND brand_id = ".$_SESSION['prodBrand']."";
+
+  }elseif (isset($_SESSION['prodBrand']) && isset($_SESSION['priceRange'])) {
+    $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE brand_id= ".$_SESSION['prodBrand']." AND ".$_SESSION['priceRange']."";
+
+  }elseif (isset($_SESSION['prodBrand']) && isset($_SESSION['priceRange']) && isset($_SESSION['categorySelect'])) {
+      $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE brand_id= ".$_SESSION['prodBrand']." AND ".$_SESSION['priceRange']." AND categories_id = ".$_SESSION['categorySelect']."";
+
+  }elseif (isset($_SESSION['searchInput'])) {
+    $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE product_name LIKE '%".$_SESSION['searchInput']."%'";
+
+  }else{
+    if(isset($_SESSION['categorySelect'])){
+      $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE categories_id = ".$_SESSION['categorySelect']."";
+    }
+    if(isset($_SESSION['priceRange'])) {
+      $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE ".$_SESSION['priceRange']."";
+    }
+    if (isset($_SESSION['prodBrand'])) {
+      $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE brand_id = ".$_SESSION['prodBrand']."";
+    }
 }
+
+
 
 $result = $conn->query($sqlGetImage);
 $output = array('data' => array());
@@ -52,7 +79,9 @@ if(!empty($result) && $result->num_rows > 0) {
 
   echo $prodDisp;
  }
- unset($_SESSION['categorySelect']);
 }
-
+unset($_SESSION['categorySelect']);
+unset($_SESSION['priceRange']);
+unset($_SESSION['prodBrand']);
+unset($_SESSION['searchInput']);
  ?>

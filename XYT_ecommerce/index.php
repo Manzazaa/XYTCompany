@@ -99,7 +99,7 @@ if (isset($_POST['catElectronics'])) {
           button[name="catHardware"] {
             background: transparent;
             border: 0 none;
-        
+
             font: inherit;
             cursor: pointer;
           }
@@ -120,12 +120,7 @@ if (isset($_POST['catElectronics'])) {
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
+                    <?php include 'searchDisplay.php' ?>
                     <div class="col-md-3">
                         <div class="user">
                             <a href="wishlist.php" class="btn wishlist">
