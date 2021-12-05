@@ -1,5 +1,10 @@
 <?php
 session_start();
+include 'dbConn.php';
+$cartCount = 0;
+if (isset($_POST['btnEmptyCart'])) {
+  unset($_SESSION['cart']);
+}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +54,7 @@ session_start();
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $cartCount; ?></span>
                             </a>
                         </div>
                     </div>
@@ -89,25 +94,7 @@ session_start();
                                     </thead>
                                     <tbody class="align-middle">
 
-                                        <tr>
-                                            <td>
-                                                <div class="img">
-                                                    <a href="#"><img src="img/product-5.jpg" alt="Image"></a>
-                                                    <p>Product Name</p>
-                                                </div>
-                                            </td>
-                                            <td>₱99</td>
-                                            <td>
-                                                <div class="qty">
-                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                    <input type="text" value="1">
-                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                                </div>
-                                            </td>
-                                            <td>₱99</td>
-                                            <td><button><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-
+                                      <?php include 'cartDisplay.php' ?>
 
                                     </tbody>
                                 </table>
@@ -118,10 +105,7 @@ session_start();
                         <div class="cart-page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="coupon">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <button>Apply Code</button>
-                                    </div>
+
                                 </div>
                                 <div class="col-md-12">
                                     <div class="cart-summary">
@@ -131,10 +115,14 @@ session_start();
                                             <p>Shipping Cost<span>₱1</span></p>
                                             <h2>Grand Total<span>₱100</span></h2>
                                         </div>
+
+                                        <form action="cart.php" method="post">
                                         <div class="cart-btn">
-                                            <button>Update Cart</button>
+                                            <button name="btnEmptyCart">Empty Cart</button>
                                             <button>Checkout</button>
                                         </div>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

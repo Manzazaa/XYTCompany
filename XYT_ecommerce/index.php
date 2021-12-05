@@ -2,7 +2,7 @@
 
 session_start();
 include 'dbConn.php';
-
+$cartCount = 0;
 if (isset($_POST['catHardware'])) {
   $_SESSION['categorySelect'] = 9;
   header("Location: product-list.php");
@@ -129,7 +129,7 @@ if (isset($_POST['catElectronics'])) {
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $cartCount; ?></span>
                             </a>
                         </div>
                     </div>

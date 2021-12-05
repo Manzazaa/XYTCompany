@@ -1,12 +1,16 @@
 <?php
 session_start();
-
-$_SESSION['cart']= array();
+$cartCount = 0;
+// if btn Cart Clicked then add products to Cart
 if (isset($_POST['btnCart'])) {
-  $_SESSION['cart'][] = array('product' => $_POST['btnCart']);
-  echo $_POST['btnCart'];
+  if(empty($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+  }
+  array_push($_SESSION['cart'], $_POST['btnCart']);
+  $cartCount = count($_SESSION['cart']);
 }
-echo count($_SESSION['cart']);
+
+
 
 
 if(isset($_POST['btnFilters'])) {
@@ -112,7 +116,7 @@ if(isset($_POST['btnFilters'])) {
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $cartCount; ?></span>
                             </a>
                         </div>
                     </div>
