@@ -1,7 +1,7 @@
 <?php
 require_once 'dbConn.php';
 
-
+	$prodName = NULL;
   if (!isset($_SESSION['categorySelect']) && !isset($_SESSION['priceRange']) && !isset($_SESSION['prodBrand']) && !isset($_SESSION['searchInput'])) {
 
     $sqlGetImage = "SELECT product_name, product_image, rate FROM product WHERE status = 1";
@@ -64,16 +64,19 @@ if(!empty($result) && $result->num_rows > 0) {
               <a href="product-detail.php">
                   <img height="400px"src="'.$imageUrl.'" alt="Product Image">
               </a>
+
+              <form action="product-list.php" method="post">
               <div class="product-action">
-                  <a href="#"><i class="fa fa-cart-plus"></i></a>
-                  <a href="#"><i class="fa fa-heart"></i></a>
-                  <a href="#"><i class="fa fa-search"></i></a>
+                  <button class="btn" name="btnCart" value="'.$prodName.'"><i class="fa fa-cart-plus"></i></button>
+                  <button class="btn" name="btnWish"><i class="fa fa-heart"></i></button>
+                  <button class="btn" name="btnInfo" ><i class="fa fa-search"></i></button>
               </div>
           </div>
           <div class="product-price">
               <h3><span>₱</span>'.$prodRate.'</h3>
-              <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+              <button class="btn" name="btnBuy'.$prodName.'"><i class="fa fa-shopping-cart"></i>Buy Now</button>
           </div>
+          </form>
       </div>
   </div>';
 

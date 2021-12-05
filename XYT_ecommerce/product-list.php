@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+$_SESSION['cart']= array();
+if (isset($_POST['btnCart'])) {
+  $_SESSION['cart'][] = array('product' => $_POST['btnCart']);
+  echo $_POST['btnCart'];
+}
+echo count($_SESSION['cart']);
+
+
 if(isset($_POST['btnFilters'])) {
   if (!empty($_POST['prodCat'])) {
     switch ($_POST['prodCat']) {
@@ -55,6 +63,7 @@ if(isset($_POST['btnFilters'])) {
     $_SESSION['prodBrand'] = $_POST['prodBrand'];
   }
 }
+
  ?>
 <!DOCTYPE html>
 <html lang="en">

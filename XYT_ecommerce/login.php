@@ -5,6 +5,7 @@ session_unset();
 include 'dbConn.php';
 $err = array('error'=>'');
 $Success = false;
+
 if(isset($_POST['btnSubmit'])){
 
   $sql='SELECT email, pass, fname  FROM customers';
@@ -14,11 +15,13 @@ if(isset($_POST['btnSubmit'])){
 
   if(empty($_POST['username']) or empty($_POST['pass'])){
   $err['error'] = 'Please fill in all the required fields';
+
   }else {
   foreach ($customers as $customer) {
-    if($_POST['username'] == $customer['email'] and $_POST['pass'] == $customer['pass']){
+    if($_POST['username'] == $customer['email'] and password_verify($_POST['pass'], $customer['pass'])){
       $_SESSION['fname'] = $customer['fname'];
       header("location:index.php");
+
     }else {
       $err['error'] = "login credentials don't match an account";
       }

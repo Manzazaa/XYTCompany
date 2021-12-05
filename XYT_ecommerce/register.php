@@ -24,9 +24,12 @@
       $email = $_POST['email'];
       $mobile = $_POST['mobile'];
       $password = $_POST['password'];
+    
+      $passHash = password_hash($password, PASSWORD_DEFAULT);
+
 
       #insert new account in customers table
-      $sql="INSERT INTO customers (fname, lname, email, pass, phone) VALUES ('$fname', '$lname', '$email', '$password', 'mobile')";
+      $sql="INSERT INTO customers (fname, lname, email, pass, phone) VALUES ('$fname', '$lname', '$email', '$passHash', 'mobile')";
       $result= mysqli_query($conn, $sql);
 
       $sqlGetFname = "SELECT fname from customers WHERE fname = '$fname'";
