@@ -29,18 +29,37 @@ if($_POST) {
 		if($result->num_rows == 1) {
 			$password = md5($password);
 			// exists
-			$mainSql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-			$mainResult = $connect->query($mainSql); 
+			$superAdminSQL = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+			$superAdminSQLRes = $connect->query($superAdminSQL);  
 
-			if($mainResult->num_rows == 1) {
-				$value = $mainResult->fetch_assoc(); //if there exists a row that satisfies both conditions
+			if($superAdminSQLRes->num_rows == 1) {
+				$value = $superAdminSQLRes->fetch_assoc(); //if there exists a row that satisfies both conditions
 				$user_id = $value['user_id']; 
-
 				// set session
 				$_SESSION['userId'] = $user_id;
+				$emptype = $value['employee_type'];
+
+				switch ($emptype){
+					case 0:
+						header('location: dashboard.php');	
+						break;
+					case 1:
+						header('location: brand.php');	
+						break;
+					case 2:
+						header('location: categories.php');	
+						break;
+					case 3:
+						header('location: suppliers.php');	
+						break;
+					case 4:
+						header('location: product.php');	
+						break;
+				}
 				//PLAN: Based on the employee type, the header will be different.
-				header('location: dashboard.php');	
-			} else{
+			} 
+			
+			else{
 				
 				$errors[] = "Incorrect username/password combination!";
 			} // /else
