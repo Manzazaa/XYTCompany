@@ -25,6 +25,7 @@
 					<thead>
 						<tr>							
 							<th>Supplier Name</th>
+							<th>Supplier Details</th>
 							<th>Status</th>
 							<th style="width:15%;">Options</th>
 						</tr>
@@ -64,7 +65,7 @@
 	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="supplierDetails" placeholder="Supplier Details" name="supplierDetails" autocomplete="off">
+				      <textarea class="form-control" id="supplierDetails" placeholder="Supplier Details" name="supplierDetails" autocomplete="off" >
 				      	</textarea>
 				    </div>
 	        </div> <!-- /form-group-->	     	        
