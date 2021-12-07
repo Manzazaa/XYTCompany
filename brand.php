@@ -65,7 +65,7 @@
 	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="supplierDetails" placeholder="Supplier Details" name="supplierDetails" autocomplete="off" >
+				      <textarea type="text" class="form-control" id="supplierDetails" placeholder="Supplier Details" name="supplierDetails" autocomplete="off" >
 				      	</textarea>
 				    </div>
 	        </div> <!-- /form-group-->	     	        
@@ -132,7 +132,7 @@
 	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
 	        	<label class="col-sm-1 control-label">: </label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="editsupplierDetails" name="editsupplierDetails" autocomplete="off">
+				      <textarea type="text" class="form-control" id="editsupplierDetails" name="editsupplierDetails" autocomplete="off">
 				      	</textarea>
 				    </div>
 	        </div> <!-- /form-group-->
