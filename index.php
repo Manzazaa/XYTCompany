@@ -49,16 +49,16 @@ if($_POST) {
 						header('location: dashboard.php');	
 						break;
 					case 1:
-						header('location: brand.php');	
+						header('location: dashboard.php');	
 						break;
 					case 2:
-						header('location: categories.php');	
+						header('location: product.php');	
 						break;
 					case 3:
-						header('location: suppliers.php');	
+						header('location: report.php');	
 						break;
 					case 4:
-						header('location: product.php');	
+						header('location: brand.php');	
 						break;
 				}
 				//PLAN: Based on the employee type, the header will be different.
