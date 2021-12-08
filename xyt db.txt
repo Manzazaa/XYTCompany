@@ -1,0 +1,52 @@
+
+---------------------CREATE xyt database--------------------
+------------------------------------
+create table Admin(
+    Name Varchar(40) NOT NULL,
+    Pass Varchar(20) NOT NULL);
+
+------------------------------------
+INSERT INTO admin VALUES("Mansour", "admin123");
+INSERT INTO admin VALUES("Jose", "qwerty");
+INSERT INTO admin VALUES("Hans", "zxcv");
+------------------------------------
+CREATE TABLE Customer(
+    CustomerID int NOT NULL,
+    FirstName varchar(20) NOT NULL,
+    LastName varchar(20) NOT NULL,
+    ContactNum int NOT NULL,
+    Email varchar(40) NOT NULL);
+------------------------------------
+CREATE TABLE orders(
+	OrderNum Varchar(10) NOT NULL,
+	CustomerID int NOT NULL,
+	ProdID int NOT NULL,
+	Quantity int NOT NULL);
+------------------------------------
+CREATE TABLE orderDetails(
+	OrderNum varchar(10) NOT NULL,
+	Total int NOT NULL,
+	OrderDate Date NOT NULL,
+	PaymentMode varchar(10) NOT NULL);
+------------------------------------
+CREATE TABLE payment(
+	PaymentMode varchar(10) NOT NULL);
+
+------------------------------------
+CREATE TABLE supplier(
+	Supplier varchar(30) NOT NULL);
+------------------------------------
+CREATE TABLE products(
+	ProdID int NOT NULL,
+	ProdName varchar(40) NOT NULL,
+	Description varchar(50) NOT NULL,
+    	Supplier varchar(30) NOT NULL,
+	Quantity int NOT NULL,
+	Cost int NOT NULL);
+----------------------------------------
+(NOV 11)
+ALTER TABLE products CHANGE ProdID ProdID INT(11) AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE products AUTO_INCREMENT = 1000;
+INSERT INTO products(ProdName, Description, Supplier, Quantity, Cost)  VALUES("martilyo", "mjolnir", "asgard", 40, 5000);
+INSERT INTO products(ProdName, Description, Supplier, Quantity, Cost)  VALUES("lansang", "hait", "sm", 40, 2000);
+INSERT INTO products(ProdName, Description, Supplier, Quantity, Cost)  VALUES("kahoy", "ligon", "bukid", 40, 1000);

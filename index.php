@@ -50,7 +50,7 @@ if($_POST) {
 						header('location: categories.php');	
 						break;
 					case 3:
-						header('location: dashboard_sales.php');	
+						header('location: suppliers.php');	
 						break;
 					case 4:
 						header('location: product.php');	
