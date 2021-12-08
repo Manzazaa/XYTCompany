@@ -34,10 +34,15 @@ if($_POST) {
 
 			if($superAdminSQLRes->num_rows == 1) {
 				$value = $superAdminSQLRes->fetch_assoc(); //if there exists a row that satisfies both conditions
+				
+				//setting session
 				$user_id = $value['user_id']; 
-				// set session
 				$_SESSION['userId'] = $user_id;
+
 				$emptype = $value['employee_type'];
+				$_SESSION['empType'] = $emptype;
+
+				$_SESSION['username']= $value['username'];
 
 				switch ($emptype){
 					case 0:
