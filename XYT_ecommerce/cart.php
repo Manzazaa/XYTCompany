@@ -7,6 +7,8 @@ $subTotal = 0;
 $shippingTotal = 0;
 $grandTotal = 0;
 
+
+
 if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
 

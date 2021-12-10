@@ -19,6 +19,15 @@ if (isset($_POST['btnWish'])) {
   array_push($_SESSION['wish'], $_POST['btnWish']);
 }
 
+// if MAGNIPAYING GLAS IS CLICKED DO THIS
+if (isset($_POST['btnInfo'])) {
+  if (!empty($_SESSION['viewDetail'])) {
+    unset($_SESSION['viewDetail']);
+  }
+  $_SESSION['viewDetail'] = $_POST['btnInfo'];
+  header("Location: product-detail.php");
+}
+
 if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
 }

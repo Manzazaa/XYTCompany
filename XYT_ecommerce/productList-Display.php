@@ -69,7 +69,7 @@ if(!empty($result) && $result->num_rows > 0) {
               <div class="product-action">
                   <button class="btn" name="btnCart" value="'.$prodName.'"><i class="fa fa-cart-plus"></i></button>
                   <button class="btn" name="btnWish" value="'.$prodName.'"><i class="fa fa-heart"></i></button>
-                  <button class="btn" name="btnInfo" ><i class="fa fa-search"></i></button>
+                  <button class="btn" name="btnInfo" value="'.$prodName.'"><i class="fa fa-search"></i></button>
               </div>
           </div>
           <div class="product-price">
