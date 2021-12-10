@@ -10,7 +10,6 @@ if (isset($_POST['btnCart'])) {
   }
   array_push($_SESSION['cart'], $_POST['btnCart']);
 }
-$cartCount = count($_SESSION['cart']);
 
 // if btn <3 clicked then add product to wishlist
 if (isset($_POST['btnWish'])) {
@@ -19,7 +18,14 @@ if (isset($_POST['btnWish'])) {
   }
   array_push($_SESSION['wish'], $_POST['btnWish']);
 }
-$wishCount = count($_SESSION['wish']);
+
+if (!empty($_SESSION['cart'])) {
+  $cartCount = count($_SESSION['cart']);
+}
+
+if (!empty($_SESSION['wish'])) {
+  $wishCount = count($_SESSION['wish']);
+}
 
 if(isset($_POST['btnFilters'])) {
   if (!empty($_POST['prodCat'])) {

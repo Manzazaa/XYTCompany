@@ -3,9 +3,31 @@ session_start();
 include 'dbConn.php';
 $cartCount = 0;
 $wishCount = 0;
+$subTotal = 0;
+$shippingTotal = 0;
+$grandTotal = 0;
 
 if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
+
+  foreach ($_SESSION['cart'] as $product) {
+    $sqlGetSubTotal = "SELECT rate FROM product WHERE product_name = '".$product."'";
+    $subTotalResult = $conn->query($sqlGetSubTotal);
+
+    if (!empty($subTotalResult) && $subTotalResult->num_rows > 0) {
+      while ($row = $subTotalResult->fetch_assoc()) {
+        $subTotal += $row["rate"];
+      }
+    }
+  }
+}
+
+if ($subTotal != 0 && $subTotal < 10000) {
+  $shippingTotal = 300;
+  $grandTotal = $subTotal + $shippingTotal;
+}elseif ($subTotal >= 10000) {
+  $shippingTotal = 400;
+  $grandTotal = $subTotal + $shippingTotal;
 }
 
 if (!empty($_SESSION['wish'])) {
@@ -14,6 +36,10 @@ if (!empty($_SESSION['wish'])) {
 
 if (isset($_POST['btnEmptyCart'])) {
   unset($_SESSION['cart']);
+  $cartCount = 0;
+  $subTotal = 0;
+  $shippingTotal = 0;
+  $grandTotal = 0;
 }
  ?>
 <!DOCTYPE html>
@@ -121,9 +147,9 @@ if (isset($_POST['btnEmptyCart'])) {
                                     <div class="cart-summary">
                                         <div class="cart-content">
                                             <h1>Cart Summary</h1>
-                                            <p>Sub Total<span>₱99</span></p>
-                                            <p>Shipping Cost<span>₱1</span></p>
-                                            <h2>Grand Total<span>₱100</span></h2>
+                                            <p>Sub Total<span>₱<?php echo $subTotal; ?></span></p>
+                                            <p>Shipping Cost<span>₱<?php echo $shippingTotal; ?></span></p>
+                                            <h2>Grand Total<span>₱<?php echo $grandTotal; ?></span></h2>
                                         </div>
 
                                         <form action="cart.php" method="post">
