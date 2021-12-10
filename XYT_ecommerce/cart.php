@@ -2,6 +2,16 @@
 session_start();
 include 'dbConn.php';
 $cartCount = 0;
+$wishCount = 0;
+
+if (!empty($_SESSION['cart'])) {
+  $cartCount = count($_SESSION['cart']);
+}
+
+if (!empty($_SESSION['wish'])) {
+  $wishCount = count($_SESSION['wish']);
+}
+
 if (isset($_POST['btnEmptyCart'])) {
   unset($_SESSION['cart']);
 }
@@ -50,7 +60,7 @@ if (isset($_POST['btnEmptyCart'])) {
                         <div class="user">
                             <a href="wishlist.php" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $wishCount; ?></span>
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>

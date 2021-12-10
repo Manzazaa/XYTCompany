@@ -1,17 +1,25 @@
 <?php
 session_start();
 $cartCount = 0;
+$wishCount = 0;
+
 // if btn Cart Clicked then add products to Cart
 if (isset($_POST['btnCart'])) {
   if(empty($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
   }
   array_push($_SESSION['cart'], $_POST['btnCart']);
-  $cartCount = count($_SESSION['cart']);
 }
+$cartCount = count($_SESSION['cart']);
 
-
-
+// if btn <3 clicked then add product to wishlist
+if (isset($_POST['btnWish'])) {
+  if (empty($_SESSION['wish'])) {
+    $_SESSION['wish'] = array();
+  }
+  array_push($_SESSION['wish'], $_POST['btnWish']);
+}
+$wishCount = count($_SESSION['wish']);
 
 if(isset($_POST['btnFilters'])) {
   if (!empty($_POST['prodCat'])) {
@@ -112,7 +120,7 @@ if(isset($_POST['btnFilters'])) {
                         <div class="user">
                             <a href="wishlist.php" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $wishCount; ?></span>
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>

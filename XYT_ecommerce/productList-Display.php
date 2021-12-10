@@ -68,7 +68,7 @@ if(!empty($result) && $result->num_rows > 0) {
               <form action="product-list.php" method="post">
               <div class="product-action">
                   <button class="btn" name="btnCart" value="'.$prodName.'"><i class="fa fa-cart-plus"></i></button>
-                  <button class="btn" name="btnWish"><i class="fa fa-heart"></i></button>
+                  <button class="btn" name="btnWish" value="'.$prodName.'"><i class="fa fa-heart"></i></button>
                   <button class="btn" name="btnInfo" ><i class="fa fa-search"></i></button>
               </div>
           </div>

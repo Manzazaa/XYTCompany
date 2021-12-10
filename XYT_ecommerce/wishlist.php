@@ -1,5 +1,15 @@
 <?php
 session_start();
+$cartCount = 0;
+$wishCount = 0;
+
+if (!empty($_SESSION['cart'])) {
+  $cartCount = count($_SESSION['cart']);
+}
+
+if (!empty($_SESSION['wish'])) {
+  $wishCount = count($_SESSION['wish']);
+}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +55,11 @@ session_start();
                         <div class="user">
                             <a href="wishlist.php" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $wishCount; ?></span>
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span><?php echo $cartCount; ?></span>
                             </a>
                         </div>
                     </div>
@@ -89,27 +99,7 @@ session_start();
                                     </thead>
                                     <tbody class="align-middle">
 
-                                        <tr>
-                                            <td>
-                                                <div class="img">
-                                                    <a href="#"><img src="" alt="Image"></a>
-                                                    <p>Product Name</p>
-                                                </div>
-                                            </td>
-                                            <td>₱99</td>
-                                            <td>
-                                                <div class="qty">
-                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                    <input type="text" value="1">
-                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                                </div>
-                                            </td>
-                                            <td><button class="btn-cart">Add to Cart</button></td>
-                                            <td><button><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-
-
-
+                                      <?php include 'wishDisplay.php'; ?>
 
                                     </tbody>
                                 </table>
