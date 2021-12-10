@@ -99,6 +99,7 @@ $connect->close();
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
 					      <button type="submit" class="btn btn-primary" id = "register" name="register"> <i class="glyphicon glyphicon-ok-sign"></i> Create Account </button>
+						  <a class="btn btn-primary" href="setting.php">Back </a>
 					      
 					    </div>
 					  
