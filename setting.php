@@ -84,7 +84,7 @@ $connect->close();
 					<legend>Administrator Privileges</legend>
 
 						<a class="btn btn-primary" href="createAccount.php">Create Employee Account </a>
-						<a class="btn btn-primary" href="#">Manage Employee Account </a>
+						<a class="btn btn-primary" href="manageEmployees.php">Manage Employee Account </a>
 						<a class="btn btn-primary" href="#">View Users </a>
 					      
 
