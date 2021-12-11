@@ -6,12 +6,12 @@
 
 		<ol class="breadcrumb">
 		  <li><a href="dashboard.php">Home</a></li>		  
-		  <li class="active">Users</li>
+		  <li class="active">Employees</li>
 		</ol>
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> View Users</div>
+				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Employees</div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
 

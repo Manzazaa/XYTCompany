@@ -8,7 +8,7 @@ if($_POST) {
 
 	$email = $_POST['email'];
 	$userName = $_POST['username'];
-	$pass = $_POST['password'];
+	$pass = md5($_POST['password']);
 	$employeeType = $_POST['employeeType'];
   	$brandId = $_POST['brandId'];
 

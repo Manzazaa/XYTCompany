@@ -248,7 +248,7 @@ function editBrands(brandId = null) {
 
 function removeBrands(brandId = null) {
 	if(brandId) {
-		$('#brandId').remove();
+		$('#removeBrandId').remove();
 		$.ajax({
 			url: 'php_action/fetchSelectedEmployee.php',
 			type: 'post',
