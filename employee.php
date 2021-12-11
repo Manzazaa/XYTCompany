@@ -39,75 +39,15 @@
 	</div> <!-- /col-md-12 -->
 </div> <!-- /row -->
 
-<div class="modal fade" id="addBrandModel" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    	
-    	<form class="form-horizontal" id="submitBrandForm" action="php_action/createBrand.php" method="POST">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-plus"></i> Add Supplier</h4>
-	      </div>
-	      <div class="modal-body">
-
-	      	<div id="add-brand-messages"></div>
-
-	        <div class="form-group">
-	        	<label for="brandName" class="col-sm-3 control-label">Supplier Name: </label>
-	        	<label class="col-sm-1 control-label">: </label>
-				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="brandName" placeholder="Supplier Name" name="brandName" autocomplete="off">
-				    </div>
-	        </div> <!-- /form-group-->	    
-
-	        <div id="add-brand-messages"></div>
-
-	        <div class="form-group">
-	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
-	        	<label class="col-sm-1 control-label">: </label>
-				    <div class="col-sm-8">
-				      <textarea type="text" class="form-control" id="supplierDetails" placeholder="Supplier Details" name="supplierDetails" autocomplete="off" >
-				      	</textarea>
-				    </div>
-	        </div> <!-- /form-group-->	     	        
-	        <div class="form-group">
-	        	<label for="brandStatus" class="col-sm-3 control-label">Status: </label>
-	        	<label class="col-sm-1 control-label">: </label>
-				    <div class="col-sm-8">
-				      <select class="form-control" id="brandStatus" name="brandStatus">
-				      	<option value="">~~SELECT~~</option>
-				      	<option value="1">Available</option>
-				      	<option value="2">Not Available</option>
-				      </select>
-				    </div>
-	        </div> <!-- /form-group-->	         	        
-
-	      </div> <!-- /modal-body -->
-	      
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        
-	        <button type="submit" class="btn btn-primary" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
-	      </div>
-	      <!-- /modal-footer -->
-     	</form>
-	     <!-- /.form -->
-    </div>
-    <!-- /modal-content -->
-  </div>
-  <!-- /modal-dailog -->
-</div>
-<!-- / add modal -->
-
 <!-- edit brand -->
 <div class="modal fade" id="editBrandModel" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     	
-    	<form class="form-horizontal" id="editBrandForm" action="php_action/editBrand.php" method="POST">
+    	<form class="form-horizontal" id="editBrandForm" action="php_action/editEmployee.php" method="POST">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-edit"></i> Edit Supplier</h4>
+	        <h4 class="modal-title"><i class="fa fa-edit"></i> Edit Employee Details</h4>
 	      </div>
 	      <div class="modal-body">
 
@@ -118,34 +58,53 @@
 						<span class="sr-only">Loading...</span>
 					</div>
 
-		      <div class="edit-brand-result">
+		         <div class="edit-brand-result">
 		      	<div class="form-group">
-		        	<label for="editBrandName" class="col-sm-3 control-label">Supplier Name: </label>
+		        	<label for="editBrandName" class="col-sm-3 control-label">Email: </label>
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="editBrandName" placeholder="Supplier Name" name="editBrandName" autocomplete="off">
+					       <input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" autocomplete="off">
 					    </div>
 		        </div> <!-- /form-group-->	
 
-		        <div id="add-brand-messages"></div>
-
-	        <div class="form-group">
-	        	<label for="brandName" class="col-sm-3 control-label">Supplier Details: </label>
-	        	<label class="col-sm-1 control-label">: </label>
-				    <div class="col-sm-8">
-				      <textarea type="text" class="form-control" id="editsupplierDetails" name="editsupplierDetails" autocomplete="off">
-				      	</textarea>
-				    </div>
-	        </div> <!-- /form-group-->
-
-		        <div class="form-group">
-		        	<label for="editBrandStatus" class="col-sm-3 control-label">Status: </label>
+		          <div class="edit-brand-result">
+		      	<div class="form-group">
+		        	<label for="editBrandName" class="col-sm-3 control-label">Username: </label>
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
-					      <select class="form-control" id="editBrandStatus" name="editBrandStatus">
+					       <input type="email" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+		        	<div class="edit-brand-result">
+		      	<div class="form-group">
+		        	<label for="editBrandName" class="col-sm-3 control-label">Password: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+		        	<div class="col-sm-8">
+		        		<input type="password" class="form-control" id="password" name="password" placeholder="New Password" autocomplete="off">
+		        	</div>
+		        </div> <!-- /form-group-->
+
+		        <div class="edit-brand-result">
+		      	<div class="form-group">
+		        	<label for="editBrandName" class="col-sm-3 control-label">Confirm Password: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+		        	<div class="col-sm-8">
+		        	<input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
+		        	</div>
+		        </div> <!-- /form-group-->
+
+
+		        <div class="form-group">
+		        	<label for="editBrandStatus" class="col-sm-3 control-label">Employee Type: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <select class="form-control" id="employeeType" name="employeeType">
 					      	<option value="">~~SELECT~~</option>
-					      	<option value="1">Available</option>
-					      	<option value="2">Not Available</option>
+					      	<option value="0">Super Admin</option>
+					      	<option value="1">Admin</option>
+					      	<option value="2">Inventory</option>
+					      	<option value="3">Sales</option>
 					      </select>
 					    </div>
 		        </div> <!-- /form-group-->	
@@ -176,10 +135,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Supplier Brand</h4>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Remove Employee</h4>
       </div>
       <div class="modal-body">
-        <p>Do you really want to remove this supplier ?</p>
+        <p>Do you really want to remove this employee ?</p>
       </div>
       <div class="modal-footer removeBrandFooter">
         <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>

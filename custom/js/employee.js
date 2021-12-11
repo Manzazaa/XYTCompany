@@ -98,10 +98,10 @@ $(document).ready(function() {
 
 });
 
-function editBrands(brandId = null) {
-	if(brandId) {
+function editBrands(userId = null) {
+	if(userId) {
 		// remove hidden brand id text
-		$('#brandId').remove();
+		$('#userId').remove();
 
 		// remove the error 
 		$('.text-danger').remove();
@@ -116,9 +116,9 @@ function editBrands(brandId = null) {
 		$('.editBrandFooter').addClass('div-hide');
 
 		$.ajax({
-			url: 'php_action/fetchSelectedBrand.php',
+			url: 'php_action/fetchSelectedEmployee.php',
 			type: 'post',
-			data: {brandId : brandId},
+			data: {userId : userId},
 			dataType: 'json',
 			success:function(response) {
 				// modal loading
@@ -236,12 +236,12 @@ function removeBrands(brandId = null) {
 	if(brandId) {
 		$('#removeBrandId').remove();
 		$.ajax({
-			url: 'php_action/fetchSelectedBrand.php',
+			url: 'php_action/fetchSelectedEmployee.php',
 			type: 'post',
 			data: {brandId : brandId},
 			dataType: 'json',
 			success:function(response) {
-				$('.removeBrandFooter').after('<input type="hidden" name="removeBrandId" id="removeBrandId" value="'+response.brand_id+'" /> ');
+				$('.removeBrandFooter').after('<input type="hidden" name="removeBrandId" id="removeBrandId" value="'+response.user_id+'" /> ');
 
 				// click on remove button to remove the brand
 				$("#removeBrandBtn").unbind('click').bind('click', function() {
@@ -249,7 +249,7 @@ function removeBrands(brandId = null) {
 					$("#removeBrandBtn").button('loading');
 
 					$.ajax({
-						url: 'php_action/removeBrand.php',
+						url: 'php_action/removeEmployee.php',
 						type: 'post',
 						data: {brandId : brandId},
 						dataType: 'json',

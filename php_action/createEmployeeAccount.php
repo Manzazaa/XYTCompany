@@ -40,8 +40,8 @@ if(isset($_POST['register'])){
       $valid['messages'] = "Passwords do not match.";
     }
     else{
-	    $sql = "INSERT INTO users (first_name, last_name, email, date_of_birth, employee_type, username, password) 
-        VALUES ('$firstName', '$lastName', '$email', '$dateOfBirth', '$employeeType', '$username', '$password')";
+	    $sql = "INSERT INTO users (first_name, last_name, email, date_of_birth, employee_type, username, password, user_status) 
+        VALUES ('$firstName', '$lastName', '$email', '$dateOfBirth', '$employeeType', '$username', '$password', 1)";
 	    if(mysqli_query($connect, $sql) === true) {
         $valid['success'] = true;
         $valid['messages'] = "Success.";	
