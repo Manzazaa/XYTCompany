@@ -2,13 +2,20 @@
 session_start();
 $cartCount = 0;
 $wishCount = 0;
-
+$quantity = 1;
 if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
 }
 
 if (!empty($_SESSION['wish'])) {
   $wishCount = count($_SESSION['wish']);
+}
+
+if (isset($_POST['btnRemoveWish'])) {
+  if (($remove = array_search($_POST['btnRemoveWish'], $_SESSION['wish'])) !== false) {
+  unset($_SESSION['wish'][$remove]);
+  $wishCount = count($_SESSION['wish']);
+  }
 }
  ?>
 <!DOCTYPE html>

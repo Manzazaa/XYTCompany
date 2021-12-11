@@ -1,5 +1,10 @@
 <?php
 require_once 'dbConn.php';
+$quantity = 1;
+if (isset($_POST['btnAddCart'])) {
+  echo $_POST['btnAddCart'];
+}
+
 
 if (!empty($_SESSION['wish'])) {
   foreach ($_SESSION['wish'] as $product) {
@@ -21,17 +26,19 @@ if (!empty($_SESSION['wish'])) {
             </td>
             <td>₱'.$prodRate.'</td>
             <td>
+              <form action="wishlist.php" method="post">
                 <div class="qty">
-                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                    <input type="text" value="1">
-                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                    <input name="quantity" type="number" value="1" min=1>
                 </div>
             </td>
-            <td><button class="btn-cart">Add to Cart</button></td>
-            <td><button><i class="fa fa-trash"></i></button></td>
-        </tr>';
+            <td><button name="btnAddCart" class="btn-cart" value="'.$prodName.'">Add to Cart</button></td>
+            <td><button name="btnRemoveWish" value="'.$prodName.'"><i class="fa fa-trash"></i></button></td>
+        </tr>
+          </form>';
       }
     }
   }
 }
+
+
  ?>
