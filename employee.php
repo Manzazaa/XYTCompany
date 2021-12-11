@@ -72,7 +72,7 @@
 		        	<label for="editBrandName" class="col-sm-3 control-label">Username: </label>
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
-					       <input type="email" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
+					       <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
 					    </div>
 		        </div> <!-- /form-group-->
 
@@ -84,16 +84,6 @@
 		        		<input type="password" class="form-control" id="password" name="password" placeholder="New Password" autocomplete="off">
 		        	</div>
 		        </div> <!-- /form-group-->
-
-		        <div class="edit-brand-result">
-		      	<div class="form-group">
-		        	<label for="editBrandName" class="col-sm-3 control-label">Confirm Password: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-		        	<div class="col-sm-8">
-		        	<input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
-		        	</div>
-		        </div> <!-- /form-group-->
-
 
 		        <div class="form-group">
 		        	<label for="editBrandStatus" class="col-sm-3 control-label">Employee Type: </label>

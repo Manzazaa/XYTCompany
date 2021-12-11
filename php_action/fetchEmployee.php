@@ -2,7 +2,7 @@
 
 require_once 'core.php';
 
-$sql = "SELECT user_id, first_name, last_name, email, date_of_birth, employee_type, username FROM users WHERE user_status = 1";
+$sql = "SELECT user_id, first_name, last_name, email, date_of_birth, employee_type, username, user_status FROM users WHERE user_status = 1";
 
 $result = $connect->query($sql);
 

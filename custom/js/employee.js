@@ -4,7 +4,7 @@ $(document).ready(function() {
 	// top bar active
 	$('#navBrand').addClass('active');
 	
-	// manage brand table
+	// manage employee table
 	manageEmployeeTable = $("#manageEmployeeTable").DataTable({
 		'ajax': 'php_action/fetchEmployee.php',
 		'order': []		
@@ -98,10 +98,10 @@ $(document).ready(function() {
 
 });
 
-function editBrands(userId = null) {
-	if(userId) {
+function editBrands(brandId = null) {
+	if(brandId) {
 		// remove hidden brand id text
-		$('#userId').remove();
+		$('#brandId').remove();
 
 		// remove the error 
 		$('.text-danger').remove();
@@ -118,7 +118,7 @@ function editBrands(userId = null) {
 		$.ajax({
 			url: 'php_action/fetchSelectedEmployee.php',
 			type: 'post',
-			data: {userId : userId},
+			data: {brandId : brandId},
 			dataType: 'json',
 			success:function(response) {
 				// modal loading
@@ -128,14 +128,16 @@ function editBrands(userId = null) {
 				// modal footer
 				$('.editBrandFooter').removeClass('div-hide');
 
-				// setting the brand name value 
-				$('#editBrandName').val(response.brand_name);
-				// setting the brand status value
-				$('#editBrandStatus').val(response.brand_active);
-				// setting the supplier details value
-				$('#editsupplierDetails').val(response.details);
+				// setting the email value 
+				$('#email').val(response.email);
+				// setting the username value
+				$('#username').val(response.username);
+				// setting the password value
+				$('#password').val(response.password);
+				// setting the employee type value
+				$('#employeeType').val(response.employee_type);
 				// brand id 
-				$(".editBrandFooter").after('<input type="hidden" name="brandId" id="brandId" value="'+response.brand_id+'" />');
+				$(".editBrandFooter").after('<input type="hidden" name="brandId" id="brandId" value="'+response.user_id+'" />');
 
 				// update brand form 
 				$('#editBrandForm').unbind('submit').bind('submit', function() {
@@ -145,42 +147,54 @@ function editBrands(userId = null) {
 					// remove the form error
 					$('.form-group').removeClass('has-error').removeClass('has-success');			
 
-					var brandName = $('#editBrandName').val();
-					var brandStatus = $('#editBrandStatus').val();
-					var supplierDetails = $("#editsupplierDetails").val();
+					var email = $('#email').val();
+					var username = $('#username').val();
+					var password = $("#password").val();
+					var employeeType = $("#employeeType").val();
 
-					if(brandName == "") {
-						$("#editBrandName").after('<p class="text-danger">Supplier Name field is required</p>');
-						$('#editBrandName').closest('.form-group').addClass('has-error');
+					if(email == "") {
+						$("#email").after('<p class="text-danger">Email field is required</p>');
+						$('#email').closest('.form-group').addClass('has-error');
 					} else {
 						// remov error text field
-						$("#editBrandName").find('.text-danger').remove();
+						$("#email").find('.text-danger').remove();
 						// success out for form 
-						$("#editBrandName").closest('.form-group').addClass('has-success');	  	
+						$("#email").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(supplierDetails == "") {
-						$("#editsupplierDetails").after('<p class="text-danger">Supplier Details field is required</p>');
-						$('#editsupplierDetails').closest('.form-group').addClass('has-error');
+					if(username == "") {
+						$("#username").after('<p class="text-danger">Username field is required</p>');
+						$('#username').closest('.form-group').addClass('has-error');
 					} else {
 						// remov error text field
-						$("#editsupplierDetails").find('.text-danger').remove();
+						$("#username").find('.text-danger').remove();
 						// success out for form 
-						$("#editsupplierDetails").closest('.form-group').addClass('has-success');	  	
+						$("#username").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(brandStatus == "") {
-						$("#editBrandStatus").after('<p class="text-danger">Supplier Status field is required</p>');
+					if(password == "") {
+						$("#password").after('<p class="text-danger">Password field is required</p>');
 
-						$('#editBrandStatus').closest('.form-group').addClass('has-error');
+						$('#password').closest('.form-group').addClass('has-error');
 					} else {
 						// remove error text field
-						$("#editBrandStatus").find('.text-danger').remove();
+						$("#password").find('.text-danger').remove();
 						// success out for form 
-						$("#editBrandStatus").closest('.form-group').addClass('has-success');	  	
+						$("#password").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(brandName && brandStatus && supplierDetails) {
+					if(employeeType == "") {
+						$("#employeeType").after('<p class="text-danger">Employee type is required</p>');
+
+						$('#employeeType').closest('.form-group').addClass('has-error');
+					} else {
+						// remove error text field
+						$("#employeeType").find('.text-danger').remove();
+						// success out for form 
+						$("#employeeType").closest('.form-group').addClass('has-success');	  	
+					}
+
+					if(email && username && password && employeeType) {
 						var form = $(this);
 
 						// submit btn
@@ -199,7 +213,7 @@ function editBrands(userId = null) {
 									$('#editBrandBtn').button('reset');
 
 									// reload the manage member table 
-									manageBrandTable.ajax.reload(null, false);								  	  										
+									manageEmployeeTable.ajax.reload(null, false);								  	  										
 									// remove the error text
 									$(".text-danger").remove();
 									// remove the form error
@@ -234,7 +248,7 @@ function editBrands(userId = null) {
 
 function removeBrands(brandId = null) {
 	if(brandId) {
-		$('#removeBrandId').remove();
+		$('#brandId').remove();
 		$.ajax({
 			url: 'php_action/fetchSelectedEmployee.php',
 			type: 'post',
@@ -263,7 +277,7 @@ function removeBrands(brandId = null) {
 								$('#removeMemberModal').modal('hide');
 
 								// reload the brand table 
-								manageBrandTable.ajax.reload(null, false);
+								manageEmployeeTable.ajax.reload(null, false);
 								
 								$('.remove-messages').html('<div class="alert alert-success">'+
 			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+

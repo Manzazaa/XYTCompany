@@ -9,14 +9,14 @@ $brandId = $_POST['brandId'];
 
 if($brandId) { 
 
- $sql = "UPDATE users SET users_status = 2 WHERE user_id = {$brandId}";
+ $sql = "UPDATE users SET user_status = 2 WHERE user_id = {$brandId}";
 
  if($connect->query($sql) === TRUE) {
  	$valid['success'] = true;
 	$valid['messages'] = "Successfully Removed";		
  } else {
  	$valid['success'] = false;
- 	$valid['messages'] = "Error while remove the brand";
+ 	$valid['messages'] = "Error while removing an employee.";
  }
  
  $connect->close();
