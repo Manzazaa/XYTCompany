@@ -9,9 +9,19 @@ if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
 }
 
-if (!empty($_SESSION['wish'])) {
-  $wishCount = count($_SESSION['wish']);
+if (isset($_SESSION['custID'])) {
+  $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
+  $resultWishCount = $conn->query($sqlWishCount);
+  if ($resultWishCount->num_rows == 0) {
+    $wishCount = 0;
+  }
+  if ($resultWishCount->num_rows > 0) {
+    while ($row = $resultWishCount->fetch_assoc()) {
+      $wishCount = $row['SUM(quantity)'];
+    }
+  }
 }
+
 
 if (isset($_POST['catHardware'])) {
   $_SESSION['categorySelect'] = 9;

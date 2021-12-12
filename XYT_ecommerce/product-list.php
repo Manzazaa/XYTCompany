@@ -4,6 +4,9 @@ session_start();
 $cartCount = 0;
 $wishCount = 0;
 
+
+
+
 // if btn Cart Clicked then add products to Cart
 if (isset($_POST['btnCart'])) {
   if(empty($_SESSION['cart'])) {
@@ -17,7 +20,6 @@ if (isset($_POST['btnWish'])) {
   if (empty($_SESSION['wish'])) {
     $_SESSION['wish'] = array();
   }
-  array_push($_SESSION['wish'], $_POST['btnWish']);
 
   $sqlCheckWish = "SELECT product_id FROM wishlist WHERE customerID = ".$_SESSION['custID']." AND product_id =".$_POST['btnWish']."";
   $resultCheck = $conn->query($sqlCheckWish);
@@ -25,6 +27,7 @@ if (isset($_POST['btnWish'])) {
   if ($resultCheck->num_rows > 0) {
     while($row = $resultCheck->fetch_assoc()) {
         $sqlUpdateWish = "UPDATE wishlist SET quantity = quantity + 1 WHERE product_id = ".$row['product_id']." AND customerID =".$_SESSION['custID']."";
+        array_push($_SESSION['wish'], $row['product_id']);
         if ($conn->query($sqlUpdateWish) === TRUE) {
           echo "Updated wishlist";
         } else {
@@ -37,6 +40,7 @@ if (isset($_POST['btnWish'])) {
       $custID = $_SESSION['custID'];
       $prodID = $_POST['btnWish'];
       $sqlAddWish = "INSERT INTO wishlist VALUES ('$custID', '$prodID', 1)";
+      array_push($_SESSION['wish'], $prodID);
       if ($conn->query($sqlAddWish) === TRUE) {
         echo "new wishlist";
       } else {
@@ -57,10 +61,6 @@ if (isset($_POST['btnInfo'])) {
 
 if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
-}
-
-if (!empty($_SESSION['wish'])) {
-  $wishCount = count($_SESSION['wish']);
 }
 
 if(isset($_POST['btnFilters'])) {
@@ -118,6 +118,16 @@ if(isset($_POST['btnFilters'])) {
   }
 }
 
+$sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
+$resultWishCount = $conn->query($sqlWishCount);
+if ($resultWishCount->num_rows == 0) {
+  $wishCount = 0;
+}
+if ($resultWishCount->num_rows > 0) {
+  while ($row = $resultWishCount->fetch_assoc()) {
+    $wishCount = $row['SUM(quantity)'];
+  }
+}
  ?>
 <!DOCTYPE html>
 <html lang="en">
