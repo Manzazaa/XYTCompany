@@ -2,7 +2,7 @@
 
 require_once 'core.php';
 
-$sql = "SELECT user_id, first_name, last_name, email, date_of_birth, employee_type, username FROM users";
+$sql = "SELECT user_id, first_name, last_name, email, date_of_birth, employee_type, username, user_status FROM users WHERE user_status = 1";
 
 $result = $connect->query($sql);
 
@@ -18,7 +18,7 @@ if($result->num_rows > 0) {
  	// active 
  	if($row[5] == 0) {
  		$employeeType = "<label class='label label-success'>Super Admin</label>";
- 	}elseif ($row[5] == 1) {
+ 	} elseif ($row[5] == 1) {
  		$employeeType = "<label class='label label-success'>Admin</label>";
  	} elseif  ($row[5] == 2) {
  		$employeeType = "<label class='label label-success'>Inventory</label>";
