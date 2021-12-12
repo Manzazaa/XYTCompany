@@ -4,9 +4,6 @@ session_start();
 $cartCount = 0;
 $wishCount = 0;
 
-
-
-
 // if btn Cart Clicked then add products to Cart
 if (isset($_POST['btnCart'])) {
   if(empty($_SESSION['cart'])) {

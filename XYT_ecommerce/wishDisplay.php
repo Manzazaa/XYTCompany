@@ -6,42 +6,33 @@ if (isset($_POST['btnAddCart'])) {
   echo $_POST['btnAddCart'];
 }
 
+$sqlDisplayWish ="SELECT product.product_id, product.product_name, product.product_image, product.rate * wishlist.quantity as 'Price', wishlist.quantity
+FROM product INNER JOIN wishlist ON product.product_id = wishlist.product_id WHERE wishlist.customerID = '".$_SESSION['custID']."'";
+$resultWish = $conn->query($sqlDisplayWish);
 
-if (!empty($_SESSION['wish'])) {
-  foreach ($_SESSION['wish'] as $product) {
-    $sqlGetProducts = "SELECT product_name, product_image, rate, product_id FROM product WHERE product_id ='".$product."'";
-    $wishResult = $conn->query($sqlGetProducts);
-
-    if (!empty($wishResult) && $wishResult->num_rows > 0) {
-      while ($row = $wishResult -> fetch_array()) {
-
-        $prodID = $row[3];
-
-        $prodName = $row[0];
-        $prodRate = $row[2];
-        $imageUrl = substr($row[1], 3);
-
-        echo '<tr>
-            <td>
-                <div class="img">
-                    <a href="#"><img src="'.$imageUrl.'" alt="Image"></a>
-                    <p>'.$prodName.'</p>
-                </div>
-            </td>
-            <td>₱'.$prodRate.'</td>
-            <td>
-              <form action="wishlist.php" method="post">
-                <div class="qty">
-                    <input name="quantity" type="number" value="1" min=1>
-                </div>
-            </td>
-            <td><button name="btnAddCart" class="btn-cart" value="'.$prodID.'">Add to Cart</button></td>
-            <td><button name="btnRemoveWish" value="'.$prodID.'"><i class="fa fa-trash"></i></button></td>
-        </tr>
-          </form>';
-      }
-    }
+if ($resultWish->num_rows > 0) {
+  while($row = $resultWish->fetch_assoc()) {
+    echo '<tr>
+        <td>
+            <div class="img">
+                <a href="#"><img src="'.$row['product_image'].'" alt="Image"></a>
+                <p>'.$row['product_name'].'</p>
+            </div>
+        </td>
+        <td>₱'.$row['Price'].'</td>
+        <td>
+          <form action="wishlist.php" method="post">
+            <div class="qty">
+                <input name="quantity" type="number" value="'.$row['quantity'].'" min=1>
+            </div>
+        </td>
+        <td><button name="btnAddCart" class="btn-cart" value="'.$row['product_id'].'">Add to Cart</button></td>
+        <td><button name="btnRemoveWish" value="'.$row['product_id'].'"><i class="fa fa-trash"></i></button></td>
+    </tr>
+      </form>';
   }
+} else {
+  echo "0 results";
 }
 
 
