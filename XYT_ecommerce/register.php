@@ -24,20 +24,21 @@
       $email = $_POST['email'];
       $mobile = $_POST['mobile'];
       $password = $_POST['password'];
-    
+
       $passHash = password_hash($password, PASSWORD_DEFAULT);
 
 
       #insert new account in customers table
-      $sql="INSERT INTO customers (fname, lname, email, pass, phone) VALUES ('$fname', '$lname', '$email', '$passHash', 'mobile')";
+      $sql="INSERT INTO customers (fname, lname, email, pass, phone) VALUES ('$fname', '$lname', '$email', '$passHash', '$mobile')";
       $result= mysqli_query($conn, $sql);
 
-      $sqlGetFname = "SELECT fname from customers WHERE fname = '$fname'";
+      $sqlGetFname = "SELECT customerID, fname from customers WHERE fname = '$fname'";
       $resultGetFname = mysqli_query($conn, $sqlGetFname);
       $Getresult = mysqli_fetch_all($resultGetFname, MYSQLI_ASSOC);
 
-      foreach ($Getresult as $fname) {
-        $_SESSION['fname'] = $fname['fname'];
+      foreach ($Getresult as $customer) {
+        $_SESSION['fname'] = $customer['fname'];
+        $_SESSION['custID'] = $customer['customerID'];
       }
       $Success = true;
     }

@@ -1,4 +1,5 @@
 <?php
+require 'dbConn.php';
 session_start();
 $cartCount = 0;
 $wishCount = 0;
@@ -17,7 +18,33 @@ if (isset($_POST['btnWish'])) {
     $_SESSION['wish'] = array();
   }
   array_push($_SESSION['wish'], $_POST['btnWish']);
-}
+
+  $sqlCheckWish = "SELECT product_id FROM wishlist WHERE customerID = ".$_SESSION['custID']." AND product_id =".$_POST['btnWish']."";
+  $resultCheck = $conn->query($sqlCheckWish);
+
+  if ($resultCheck->num_rows > 0) {
+    while($row = $resultCheck->fetch_assoc()) {
+        $sqlUpdateWish = "UPDATE wishlist SET quantity = quantity + 1 WHERE product_id = ".$row['product_id']." AND customerID =".$_SESSION['custID']."";
+        if ($conn->query($sqlUpdateWish) === TRUE) {
+          echo "Updated wishlist";
+        } else {
+          echo "Update wishlist error " . $conn->error;
+        }
+      }
+    }
+
+    if ($resultCheck->num_rows == 0){
+      $custID = $_SESSION['custID'];
+      $prodID = $_POST['btnWish'];
+      $sqlAddWish = "INSERT INTO wishlist VALUES ('$custID', '$prodID', 1)";
+      if ($conn->query($sqlAddWish) === TRUE) {
+        echo "new wishlist";
+      } else {
+        echo "new wishlist error" . $conn->error;
+      }
+    }
+
+  }
 
 // if MAGNIPAYING GLAS IS CLICKED DO THIS
 if (isset($_POST['btnInfo'])) {

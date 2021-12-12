@@ -8,7 +8,7 @@ $Success = false;
 
 if(isset($_POST['btnSubmit'])){
 
-  $sql='SELECT email, pass, fname  FROM customers';
+  $sql='SELECT email, pass, fname, customerID  FROM customers';
   $result= mysqli_query($conn, $sql);
   $customers = mysqli_fetch_all($result, MYSQLI_ASSOC);
   $err = array('error'=>'');
@@ -20,6 +20,7 @@ if(isset($_POST['btnSubmit'])){
   foreach ($customers as $customer) {
     if($_POST['username'] == $customer['email'] and password_verify($_POST['pass'], $customer['pass'])){
       $_SESSION['fname'] = $customer['fname'];
+      $_SESSION['custID'] = $customer['customerID'];
       header("location:index.php");
 
     }else {

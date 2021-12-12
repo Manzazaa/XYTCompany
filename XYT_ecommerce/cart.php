@@ -13,7 +13,7 @@ if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
 
   foreach ($_SESSION['cart'] as $product) {
-    $sqlGetSubTotal = "SELECT rate FROM product WHERE product_name = '".$product."'";
+    $sqlGetSubTotal = "SELECT rate FROM product WHERE product_id = '".$product."'";
     $subTotalResult = $conn->query($sqlGetSubTotal);
 
     if (!empty($subTotalResult) && $subTotalResult->num_rows > 0) {

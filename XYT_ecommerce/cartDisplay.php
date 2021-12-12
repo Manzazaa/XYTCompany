@@ -3,7 +3,7 @@ require_once 'dbConn.php';
 
 if (!empty($_SESSION['cart'])) {
   foreach ($_SESSION['cart'] as $product) {
-    $sqlGetProducts = "SELECT product_name, product_image, rate FROM product WHERE product_name ='".$product."'";
+    $sqlGetProducts = "SELECT product_name, product_image, rate, product_id FROM product WHERE product_id ='".$product."'";
     $cartresult = $conn->query($sqlGetProducts);
 
     if(!empty($cartresult) && $cartresult->num_rows > 0) {
@@ -11,7 +11,7 @@ if (!empty($_SESSION['cart'])) {
         $prodName = $row[0];
         $prodRate = $row[2];
         $imageUrl = substr($row[1], 3);
-
+        $prodID = $row[3];
         echo '<tr>
             <td>
                 <div class="img">
@@ -32,7 +32,7 @@ if (!empty($_SESSION['cart'])) {
         </tr>';
       }
     }
-    
+
     else {
       echo "Your Cart is empty, add products now.";
     }
