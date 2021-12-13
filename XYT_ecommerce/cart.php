@@ -7,6 +7,17 @@ $subTotal = 0;
 $shippingTotal = 0;
 $grandTotal = 0;
 
+if (isset($_POST['btnRemoveCart'])) {
+  $prodID = $_POST['btnRemoveCart'];
+  $sqlDeleteCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id = ".$prodID."";
+
+  if ($conn->query($sqlDeleteCart) === TRUE) {
+    echo "Removed from cart";
+  } else {
+    echo "Error removing" . $conn->error;
+  }
+}
+
 if (isset($_SESSION['custID'])) {
   //CHECKING NUMBERS OF PRODUCT IN WISHLIST
   $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
