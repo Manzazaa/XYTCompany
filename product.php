@@ -25,7 +25,8 @@
 					<thead>
 						<tr>
 							<th style="width:10%;">Photo</th>							
-							<th>Product Name</th>
+							<th>Name</th>
+							<th>Description</th>
 							<th>Rate</th>							
 							<th>Quantity</th>
 							<th>Supplier</th>
