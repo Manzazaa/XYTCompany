@@ -107,9 +107,6 @@ if (isset($_POST['btnInfo'])) {
   header("Location: product-detail.php");
 }
 
-if (!empty($_SESSION['cart'])) {
-  $cartCount = count($_SESSION['cart']);
-}
 
 if(isset($_POST['btnFilters'])) {
   if (!empty($_POST['prodCat'])) {
