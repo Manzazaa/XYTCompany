@@ -72,6 +72,32 @@ if (isset($_POST['btnWish'])) {
 
   }
 
+  if (isset($_SESSION['custID'])) {
+    //CHECKING NUMBERS OF PRODUCT IN WISHLIST
+    $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
+    $resultWishCount = $conn->query($sqlWishCount);
+    if ($resultWishCount->num_rows == 0) {
+      $wishCount = 0;
+    }
+    if ($resultWishCount->num_rows > 0) {
+      while ($row = $resultWishCount->fetch_assoc()) {
+        $wishCount = $row['SUM(quantity)'];
+      }
+    }
+
+    //CHECKING NUMBER OF PRODUCTS IN CART
+    $sqlCartCount = "SELECT SUM(quantity) FROM cart WHERE customerID = ".$_SESSION['custID']."";
+    $resultCartCount = $conn->query($sqlCartCount);
+    if ($resultCartCount->num_rows == 0) {
+      $cartCount = 0;
+    }
+    if ($resultCartCount->num_rows > 0) {
+      while ($row = $resultCartCount->fetch_assoc()) {
+        $cartCount = $row['SUM(quantity)'];
+      }
+    }
+  }
+
 // if MAGNIPAYING GLAS IS CLICKED DO THIS
 if (isset($_POST['btnInfo'])) {
   if (!empty($_SESSION['viewDetail'])) {

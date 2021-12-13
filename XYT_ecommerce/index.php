@@ -5,11 +5,9 @@ include 'dbConn.php';
 $cartCount = 0;
 $wishCount = 0;
 
-if (!empty($_SESSION['cart'])) {
-  $cartCount = count($_SESSION['cart']);
-}
 
 if (isset($_SESSION['custID'])) {
+  //CHECKING NUMBERS OF PRODUCT IN WISHLIST
   $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
   $resultWishCount = $conn->query($sqlWishCount);
   if ($resultWishCount->num_rows == 0) {
@@ -18,6 +16,18 @@ if (isset($_SESSION['custID'])) {
   if ($resultWishCount->num_rows > 0) {
     while ($row = $resultWishCount->fetch_assoc()) {
       $wishCount = $row['SUM(quantity)'];
+    }
+  }
+
+  //CHECKING NUMBER OF PRODUCTS IN CART
+  $sqlCartCount = "SELECT SUM(quantity) FROM cart WHERE customerID = ".$_SESSION['custID']."";
+  $resultCartCount = $conn->query($sqlCartCount);
+  if ($resultCartCount->num_rows == 0) {
+    $cartCount = 0;
+  }
+  if ($resultCartCount->num_rows > 0) {
+    while ($row = $resultCartCount->fetch_assoc()) {
+      $cartCount = $row['SUM(quantity)'];
     }
   }
 }
