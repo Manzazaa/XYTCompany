@@ -47,6 +47,7 @@ $(document).ready(function() {
 			var brandName = $("#brandName").val();
 			var categoryName = $("#categoryName").val();
 			var productStatus = $("#productStatus").val();
+			var productDesc = $("#productDesc").val();
 	
 			if(productImage == "") {
 				$("#productImage").closest('.center-block').after('<p class="text-danger">Product Image field is required</p>');
@@ -66,6 +67,16 @@ $(document).ready(function() {
 				$("#productName").find('.text-danger').remove();
 				// success out for form 
 				$("#productName").closest('.form-group').addClass('has-success');	  	
+			}	// /else
+
+			if(productDesc == "") {
+				$("#productDesc").after('<p class="text-danger">Product Description field is required</p>');
+				$('#productDesc').closest('.form-group').addClass('has-error');
+			}	else {
+				// remov error text field
+				$("#productDesc").find('.text-danger').remove();
+				// success out for form 
+				$("#productDesc").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
 			if(quantity == "") {
@@ -118,7 +129,7 @@ $(document).ready(function() {
 				$("#productStatus").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(productImage && productName && quantity && rate && brandName && categoryName && productStatus) {
+			if(productImage && productName && productDesc && quantity && rate && brandName && categoryName && productStatus) {
 				// submit loading button
 				$("#createProductBtn").button('loading');
 
@@ -233,6 +244,8 @@ function editProduct(productId = null) {
 				
 				// product name
 				$("#editProductName").val(response.product_name);
+				// product description
+				$("#editproductDesc").val(response.description);
 				// quantity
 				$("#editQuantity").val(response.quantity);
 				// rate
@@ -255,6 +268,7 @@ function editProduct(productId = null) {
 					var brandName = $("#editBrandName").val();
 					var categoryName = $("#editCategoryName").val();
 					var productStatus = $("#editProductStatus").val();
+					var productDesc = $("#editproductDesc").val();
 								
 
 					if(productName == "") {
@@ -265,6 +279,16 @@ function editProduct(productId = null) {
 						$("#editProductName").find('.text-danger').remove();
 						// success out for form 
 						$("#editProductName").closest('.form-group').addClass('has-success');	  	
+					}	// /else
+
+					if(productDesc == "") {
+						$("#editproductDesc").after('<p class="text-danger">Product Description field is required</p>');
+						$('#editproductDesc').closest('.form-group').addClass('has-error');
+					}	else {
+						// remov error text field
+						$("#editproductDesc").find('.text-danger').remove();
+						// success out for form 
+						$("#editproductDesc").closest('.form-group').addClass('has-success');	  	
 					}	// /else
 
 					if(quantity == "") {
@@ -317,7 +341,7 @@ function editProduct(productId = null) {
 						$("#editProductStatus").closest('.form-group').addClass('has-success');	  	
 					}	// /else					
 
-					if(productName && quantity && rate && brandName && categoryName && productStatus) {
+					if(productName && productDesc && quantity && rate && brandName && categoryName && productStatus) {
 						// submit loading button
 						$("#editProductBtn").button('loading');
 

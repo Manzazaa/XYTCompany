@@ -78,6 +78,15 @@
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control" id="productName" placeholder="Product Name" name="productName" autocomplete="off">
 				    </div>
+	        </div> <!-- /form-group-->	
+
+	        <div class="form-group">
+	        	<label for="productName" class="col-sm-3 control-label">Description: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				       <textarea type="text" class="form-control" id="productDesc" placeholder="Product Description" name="productDesc" autocomplete="off" >
+				      	</textarea>
+				    </div>
 	        </div> <!-- /form-group-->	    
 
 	        <div class="form-group">
@@ -236,7 +245,16 @@
 						    <div class="col-sm-8">
 						      <input type="text" class="form-control" id="editProductName" placeholder="Product Name" name="editProductName" autocomplete="off">
 						    </div>
-			        </div> <!-- /form-group-->	    
+			        </div> <!-- /form-group-->	
+
+			        <div class="form-group">
+	        	<label for="productName" class="col-sm-3 control-label">Description: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				       <textarea type="text" class="form-control" id="editproductDesc" placeholder="Product Description" name="editproductDesc" autocomplete="off" >
+				      	</textarea>
+				    </div>
+	        </div> <!-- /form-group-->    
 
 			        <div class="form-group">
 			        	<label for="editQuantity" class="col-sm-3 control-label">Quantity: </label>
