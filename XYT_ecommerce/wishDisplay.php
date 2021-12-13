@@ -2,9 +2,6 @@
 require_once 'dbConn.php';
 $quantity = 1;
 
-if (isset($_POST['btnAddCart'])) {
-  echo $_POST['btnAddCart'];
-}
 
 $sqlDisplayWish ="SELECT product.product_id, product.product_name, product.product_image, product.rate * wishlist.quantity as 'Price', wishlist.quantity
 FROM product INNER JOIN wishlist ON product.product_id = wishlist.product_id WHERE wishlist.customerID = '".$_SESSION['custID']."'";
