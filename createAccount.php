@@ -27,8 +27,7 @@ $connect->close();
 					<fieldset>
 						<legend>Employee Biodata</legend>
 
-						<div class="changeUsenrameMessages">
-						</div>
+						<div class="createAccountMessage"></div>
 
                       <div class="form-group">
 					    <label for="firstName" class="col-sm-2 control-label">First Name</label>
