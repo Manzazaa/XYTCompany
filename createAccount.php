@@ -63,11 +63,10 @@ $connect->close();
                         <div class="col-sm-10">
                         <select class="form-control" name="employeeType" id="employeeType">
                             <option value="">Select Employee Type</option>
-                            <option value="0">0 (SUPER ADMINISTRATIVE)</option>
-                            <option value="1">1 (ADMINISTRATIVE)</option>
-                            <option value="2">2 (INVENTORY)</option>
-                            <option value="3">3 (SALES)</option>
-                            <option value="4">4 (LOGISTICS)</option>
+                            <option value="1">ADMINISTRATIVE</option>
+                            <option value="2">INVENTORY</option>
+                            <option value="3">SALES</option>
+                            <option value="4">LOGISTICS</option>
                         </select>
                         </div>
                     </div>
