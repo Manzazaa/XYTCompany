@@ -1,43 +1,36 @@
 <?php
 require_once 'dbConn.php';
 
-if (!empty($_SESSION['cart'])) {
-  foreach ($_SESSION['cart'] as $product) {
-    $sqlGetProducts = "SELECT product_name, product_image, rate, product_id FROM product WHERE product_id ='".$product."'";
-    $cartresult = $conn->query($sqlGetProducts);
 
-    if(!empty($cartresult) && $cartresult->num_rows > 0) {
-      while($row = $cartresult -> fetch_array()) {
-        $prodName = $row[0];
-        $prodRate = $row[2];
-        $imageUrl = substr($row[1], 3);
-        $prodID = $row[3];
-        echo '<tr>
-            <td>
-                <div class="img">
-                    <a href="#"><img src="'.$imageUrl.'" alt="Image"></a>
-                    <p>'.$prodName.'</p>
-                </div>
-            </td>
-            <td>'.$prodRate.'</td>
-            <td>
-                <div class="qty">
-                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                    <input type="text" value="1">
-                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                </div>
-            </td>
-            <td>'.$prodRate.'</td>
-            <td><button><i class="fa fa-trash"></i></button></td>
-        </tr>';
-      }
-    }
+$sqlDisplayCart ="SELECT product.product_id, product.product_name, product.product_image, product.rate * cart.quantity as 'Total', product.rate, cart.quantity
+FROM product INNER JOIN cart ON product.product_id = cart.product_id WHERE cart.customerID = '".$_SESSION['custID']."'";
+$resultCart = $conn->query($sqlDisplayCart);
 
-    else {
-      echo "Your Cart is empty, add products now.";
-    }
+if ($resultCart->num_rows > 0) {
+  while($row = $resultCart->fetch_assoc()) {
+    echo '<tr>
+        <td>
+            <div class="img">
+                <a href="#"><img src="'.$row['product_image'].'" alt="Image"></a>
+                <p>'.$row['product_name'].'</p>
+            </div>
+        </td>
+        <td>'.$row['rate'].'</td>
+        <td>
+            <div class="qty">
+                <button class="btn-minus"><i class="fa fa-minus"></i></button>
+                <input type="text" value="'.$row['quantity'].'">
+                <button class="btn-plus"><i class="fa fa-plus"></i></button>
+            </div>
+        </td>
+        <td>'.$row['Total'].'</td>
+        <td><button><i class="fa fa-trash"></i></button></td>
+    </tr>';
   }
+} else {
+  echo "0 results";
 }
+
 
 
  ?>

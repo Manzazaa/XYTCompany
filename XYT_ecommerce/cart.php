@@ -7,20 +7,38 @@ $subTotal = 0;
 $shippingTotal = 0;
 $grandTotal = 0;
 
-
-
-if (!empty($_SESSION['cart'])) {
-  $cartCount = count($_SESSION['cart']);
-
-  foreach ($_SESSION['cart'] as $product) {
-    $sqlGetSubTotal = "SELECT rate FROM product WHERE product_id = '".$product."'";
-    $subTotalResult = $conn->query($sqlGetSubTotal);
-
-    if (!empty($subTotalResult) && $subTotalResult->num_rows > 0) {
-      while ($row = $subTotalResult->fetch_assoc()) {
-        $subTotal += $row["rate"];
-      }
+if (isset($_SESSION['custID'])) {
+  //CHECKING NUMBERS OF PRODUCT IN WISHLIST
+  $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
+  $resultWishCount = $conn->query($sqlWishCount);
+  if ($resultWishCount->num_rows == 0) {
+    $wishCount = 0;
+  }
+  if ($resultWishCount->num_rows > 0) {
+    while ($row = $resultWishCount->fetch_assoc()) {
+      $wishCount = $row['SUM(quantity)'];
     }
+  }
+
+  //CHECKING NUMBER OF PRODUCTS IN CART
+  $sqlCartCount = "SELECT SUM(quantity) FROM cart WHERE customerID = ".$_SESSION['custID']."";
+  $resultCartCount = $conn->query($sqlCartCount);
+  if ($resultCartCount->num_rows == 0) {
+    $cartCount = 0;
+  }
+  if ($resultCartCount->num_rows > 0) {
+    while ($row = $resultCartCount->fetch_assoc()) {
+      $cartCount = $row['SUM(quantity)'];
+    }
+  }
+}
+
+$sqlCartSummary = "SELECT SUM(product.rate * cart.quantity) as 'Total'
+FROM product INNER JOIN cart ON product.product_id = cart.product_id WHERE cart.customerID ='".$_SESSION['custID']."'";
+$resultSummary = $conn->query($sqlCartSummary);
+if ($resultSummary->num_rows > 0) {
+  while($row = $resultSummary->fetch_assoc()) {
+      $subTotal = $row['Total'];
   }
 }
 
@@ -32,18 +50,6 @@ if ($subTotal != 0 && $subTotal < 10000) {
   $grandTotal = $subTotal + $shippingTotal;
 }
 
-if (isset($_SESSION['custID'])) {
-  $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
-  $resultWishCount = $conn->query($sqlWishCount);
-  if ($resultWishCount->num_rows == 0) {
-    $wishCount = 0;
-  }
-  if ($resultWishCount->num_rows > 0) {
-    while ($row = $resultWishCount->fetch_assoc()) {
-      $wishCount = $row['SUM(quantity)'];
-    }
-  }
-}
 
 if (isset($_POST['btnEmptyCart'])) {
   unset($_SESSION['cart']);

@@ -8,7 +8,29 @@ if (!empty($_SESSION['cart'])) {
   $cartCount = count($_SESSION['cart']);
 }
 
+//kay naa may kwarta wishlist to cart matik
+if (isset($_POST['btnAddCart'])) {
+  $custID = $_SESSION['custID'];
+  $prodID = $_POST['btnAddCart'];
+  $prodQuantity = $_POST['quantity'];
+  $sqlWishToCart = "INSERT INTO cart VALUES ('$custID', '$prodID', '$prodQuantity')";
+
+  if ($conn->query($sqlWishToCart) === TRUE) {
+    $sqlRemoveWish = "DELETE FROM wishlist WHERE customerID = ".$custID." AND product_id = ".$prodID."";
+
+    if ($conn->query($sqlRemoveWish) === TRUE) {
+
+    } else {
+      echo "Error deleting record: " . $conn->error;
+    }
+    echo "Added to Cart";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
 if (isset($_SESSION['custID'])) {
+  //CHECKING NUMBERS OF PRODUCT IN WISHLIST
   $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
   $resultWishCount = $conn->query($sqlWishCount);
   if ($resultWishCount->num_rows == 0) {
@@ -17,6 +39,18 @@ if (isset($_SESSION['custID'])) {
   if ($resultWishCount->num_rows > 0) {
     while ($row = $resultWishCount->fetch_assoc()) {
       $wishCount = $row['SUM(quantity)'];
+    }
+  }
+
+  //CHECKING NUMBER OF PRODUCTS IN CART
+  $sqlCartCount = "SELECT SUM(quantity) FROM cart WHERE customerID = ".$_SESSION['custID']."";
+  $resultCartCount = $conn->query($sqlCartCount);
+  if ($resultCartCount->num_rows == 0) {
+    $cartCount = 0;
+  }
+  if ($resultCartCount->num_rows > 0) {
+    while ($row = $resultCartCount->fetch_assoc()) {
+      $cartCount = $row['SUM(quantity)'];
     }
   }
 }
