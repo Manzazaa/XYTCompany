@@ -1,20 +1,67 @@
 <?php
 session_start();
-
+require_once 'dbConn.php';
 $cartCount = 0;
 $wishCount = 0;
 
-if (!empty($_SESSION['cart'])) {
-  $cartCount = count($_SESSION['cart']);
-}
-
-if (!empty($_SESSION['wish'])) {
-  $wishCount = count($_SESSION['wish']);
-}
-
 
 if (isset($_POST['btnAddCart'])) {
-  
+  if(empty($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+  }
+  $sqlCheckCart = "SELECT product_id FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id =".$_SESSION['viewDetail']."";
+  $resultCheck = $conn->query($sqlCheckCart);
+
+  if ($resultCheck->num_rows > 0) {
+    while($row = $resultCheck->fetch_assoc()) {
+        $sqlUpdateCart = "UPDATE cart SET quantity = quantity + 1 WHERE product_id = ".$_SESSION['viewDetail']." AND customerID =".$_SESSION['custID']."";
+        array_push($_SESSION['cart'], $row['product_id']);
+        if ($conn->query($sqlUpdateCart) === TRUE) {
+          echo "Updated cart";
+        } else {
+          echo "Update wishlist error " . $conn->error;
+        }
+      }
+    }
+
+    if ($resultCheck->num_rows == 0){
+      $custID = $_SESSION['custID'];
+      $prodID = $_SESSION['viewDetail'];
+      $sqlAddCart = "INSERT INTO cart VALUES ('$custID', '$prodID', 1)";
+      array_push($_SESSION['cart'], $prodID);
+      if ($conn->query($sqlAddCart) === TRUE) {
+        echo "added to cart";
+      } else {
+        echo "cart error" . $conn->error;
+      }
+    }
+}
+
+
+if (isset($_SESSION['custID'])) {
+  //CHECKING NUMBERS OF PRODUCT IN WISHLIST
+  $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
+  $resultWishCount = $conn->query($sqlWishCount);
+  if ($resultWishCount->num_rows == 0) {
+    $wishCount = 0;
+  }
+  if ($resultWishCount->num_rows > 0) {
+    while ($row = $resultWishCount->fetch_assoc()) {
+      $wishCount = $row['SUM(quantity)'];
+    }
+  }
+
+  //CHECKING NUMBER OF PRODUCTS IN CART
+  $sqlCartCount = "SELECT SUM(quantity) FROM cart WHERE customerID = ".$_SESSION['custID']."";
+  $resultCartCount = $conn->query($sqlCartCount);
+  if ($resultCartCount->num_rows == 0) {
+    $cartCount = 0;
+  }
+  if ($resultCartCount->num_rows > 0) {
+    while ($row = $resultCartCount->fetch_assoc()) {
+      $cartCount = $row['SUM(quantity)'];
+    }
+  }
 }
 
  ?>

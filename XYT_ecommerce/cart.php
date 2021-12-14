@@ -7,6 +7,21 @@ $subTotal = 0;
 $shippingTotal = 0;
 $grandTotal = 0;
 
+if (isset($_POST['btnEmptyCart'])) {
+  unset($_SESSION['cart']);
+
+  $sqlEmptyCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']."";
+  if ($conn->query($sqlEmptyCart) === TRUE) {
+    echo "cart now empty";
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
+  // $cartCount = 0;
+  // $subTotal = 0;
+  // $shippingTotal = 0;
+  // $grandTotal = 0;
+}
+
 if (isset($_POST['btnRemoveCart'])) {
   $prodID = $_POST['btnRemoveCart'];
   $sqlDeleteCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id = ".$prodID."";
@@ -16,6 +31,10 @@ if (isset($_POST['btnRemoveCart'])) {
   } else {
     echo "Error removing" . $conn->error;
   }
+}
+
+if (isset($_POST['btnCheckOut'])) {
+  header("Location: checkout.php");
 }
 
 if (isset($_SESSION['custID'])) {
@@ -62,13 +81,7 @@ if ($subTotal != 0 && $subTotal < 10000) {
 }
 
 
-if (isset($_POST['btnEmptyCart'])) {
-  unset($_SESSION['cart']);
-  $cartCount = 0;
-  $subTotal = 0;
-  $shippingTotal = 0;
-  $grandTotal = 0;
-}
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -183,7 +196,7 @@ if (isset($_POST['btnEmptyCart'])) {
                                         <form action="cart.php" method="post">
                                         <div class="cart-btn">
                                             <button name="btnEmptyCart">Empty Cart</button>
-                                            <button>Checkout</button>
+                                            <button name="btnCheckOut">Checkout</button>
                                         </div>
                                         </form>
 
