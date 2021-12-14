@@ -42,9 +42,32 @@ if (isset($_SESSION['custID'])) {
       $shippingTotal = 400;
       $grandTotal = $subTotal + $shippingTotal;
     }
-
 }
 
+if (isset($_POST['btnPlaceOrder'])) {
+  //date, full name, phone, subtotal, 0, grandtotal, 0, grandtotal, 0, 0, paymentType, 1, 1, address, email
+  $date = date("Y-m-d");
+  $fullName = $_POST['fName'].' '.$_POST['lName'];
+  $phone = $_POST['phone'];
+  $address = $_POST['address'].', '.$_POST['city'].', '.$_POST['country'].', '.$_POST['zip'];
+  $email = $_POST['email'];
+  if(isset($_POST['rbPaypal'])){
+    $paymentMode = 3;
+  }
+  if(isset($_POST['rbCod'])){
+    $paymentMode = 4;
+  }
+
+  $sqlPlaceOrder = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status, address, email)
+  VALUES ('$date', '$fullName', '$phone', '$subTotal', 0, '$grandTotal', 0, '$grandTotal', 0, 0, '$paymentMode', 1, 1, '$address', '$email')";
+
+  if ($conn->query($sqlPlaceOrder) === TRUE) {
+    echo "Order Successfully Placed";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+
+}
 
  ?>
 
@@ -95,98 +118,50 @@ if (isset($_SESSION['custID'])) {
                     <div class="col-lg-8">
                         <div class="checkout-inner">
                             <div class="billing-address">
-                                <h2>Billing Address</h2>
+                                <!--<h2>Billing Address</h2>-->
+                                <form action="checkout.php" method="post">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>First Name</label>
-                                        <input class="form-control" type="text" placeholder="First Name" value="<?php echo $fName ?>">
+                                        <input name="fName"class="form-control" type="text" placeholder="First Name" value="<?php echo $fName ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Last Name"</label>
-                                        <input class="form-control" type="text" placeholder="Last Name" value="<?php echo $lName ?>">
+                                        <input name="lName"class="form-control" type="text" placeholder="Last Name" value="<?php echo $lName ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>E-mail</label>
-                                        <input class="form-control" type="text" placeholder="E-mail" value="<?php echo $email ?>">
+                                        <input name="email"class="form-control" type="text" placeholder="E-mail" value="<?php echo $email ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Mobile No</label>
-                                        <input class="form-control" type="text" placeholder="Mobile No" value="<?php echo $phone ?>">
+                                        <input name="phone"class="form-control" type="text" placeholder="Mobile No" value="<?php echo $phone ?>">
                                     </div>
                                     <div class="col-md-12">
                                         <label>Address</label>
-                                        <input class="form-control" type="text" placeholder="Address" >
+                                        <input name="address"class="form-control" type="text" placeholder="Address" >
                                     </div>
                                     <div class="col-md-6">
                                         <label>Country</label>
-                                        <select class="custom-select">
+                                        <select name="country"class="custom-select">
                                             <option selected>Philippines</option>
                                             <option>United Kingdom</option>
                                             <option>United States</option>
-
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label>City</label>
-                                        <input class="form-control" type="text" placeholder="City">
+                                        <input name="city"class="form-control" type="text" placeholder="City">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label>ZIP Code</label>
-                                        <input class="form-control" type="text" placeholder="ZIP Code">
+                                        <input name="zip"class="form-control" type="text" placeholder="ZIP Code">
                                     </div>
                                     <div class="col-md-12">
 
                                     </div>
                                     <div class="col-md-12">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="shipping-address">
-                                <h2>Shipping Address</h2>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>First Name</label>
-                                        <input class="form-control" type="text" placeholder="First Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Last Name"</label>
-                                        <input class="form-control" type="text" placeholder="Last Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>E-mail</label>
-                                        <input class="form-control" type="text" placeholder="E-mail">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Mobile No</label>
-                                        <input class="form-control" type="text" placeholder="Mobile No">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label>Address</label>
-                                        <input class="form-control" type="text" placeholder="Address">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Country</label>
-                                        <select class="custom-select">
-                                            <option selected>United States</option>
-                                            <option>Afghanistan</option>
-                                            <option>Albania</option>
-                                            <option>Algeria</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>City</label>
-                                        <input class="form-control" type="text" placeholder="City">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>State</label>
-                                        <input class="form-control" type="text" placeholder="State">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>ZIP Code</label>
-                                        <input class="form-control" type="text" placeholder="ZIP Code">
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +182,7 @@ if (isset($_SESSION['custID'])) {
                                     <h1>Payment Methods</h1>
                                     <div class="payment-method">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="payment-1" name="payment">
+                                            <input name="rbPaypal"type="radio" class="custom-control-input" id="payment-1" name="payment">
                                             <label class="custom-control-label" for="payment-1">Paypal</label>
                                         </div>
                                         <div class="payment-content" id="payment-1-show">
@@ -219,7 +194,7 @@ if (isset($_SESSION['custID'])) {
 
                                     <div class="payment-method">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="payment-5" name="payment">
+                                            <input name="rbCod"type="radio" class="custom-control-input" id="payment-5" name="payment">
                                             <label class="custom-control-label" for="payment-5">Cash on Delivery</label>
                                         </div>
                                         <div class="payment-content" id="payment-5-show">
@@ -230,8 +205,9 @@ if (isset($_SESSION['custID'])) {
                                     </div>
                                 </div>
                                 <div class="checkout-btn">
-                                    <button>Place Order</button>
+                                    <button name="btnPlaceOrder">Place Order</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
