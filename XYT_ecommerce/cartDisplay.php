@@ -19,9 +19,9 @@ if ($resultCart->num_rows > 0) {
         <td>
         <form action="cart.php" method="post">
             <div class="qty">
-                <button class="btn-minus"><i class="fa fa-minus"></i></button>
+                <button name="btnMinusQuantity" class="btn-minus" value="'.$row['product_id'].'"><i class="fa fa-minus"></i></button>
                 <input type="text" value="'.$row['quantity'].'">
-                <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                <button name="btnAddQuantity" class="btn-plus" value="'.$row['product_id'].'"><i class="fa fa-plus"></i></button>
             </div>
         </td>
         <td>'.$row['Total'].'</td>

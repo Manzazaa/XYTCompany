@@ -5,6 +5,39 @@ $cartCount = 0;
 $wishCount = 0;
 
 
+if (isset($_POST['btnAddWish'])) {
+  if (empty($_SESSION['wish'])) {
+    $_SESSION['wish'] = array();
+  }
+
+  $sqlCheckWish = "SELECT product_id FROM wishlist WHERE customerID = ".$_SESSION['custID']." AND product_id =".$_SESSION['viewDetail']."";
+  $resultCheck = $conn->query($sqlCheckWish);
+
+  if ($resultCheck->num_rows > 0) {
+    while($row = $resultCheck->fetch_assoc()) {
+        $sqlUpdateWish = "UPDATE wishlist SET quantity = quantity + 1 WHERE product_id = ".$row['product_id']." AND customerID =".$_SESSION['custID']."";
+        array_push($_SESSION['wish'], $row['product_id']);
+        if ($conn->query($sqlUpdateWish) === TRUE) {
+          echo "Updated wishlist";
+        } else {
+          echo "Update wishlist error " . $conn->error;
+        }
+      }
+    }
+
+    if ($resultCheck->num_rows == 0){
+      $custID = $_SESSION['custID'];
+      $prodID = $_SESSION['viewDetail'];
+      $sqlAddWish = "INSERT INTO wishlist VALUES ('$custID', '$prodID', 1)";
+      array_push($_SESSION['wish'], $prodID);
+      if ($conn->query($sqlAddWish) === TRUE) {
+        echo "new wishlist";
+      } else {
+        echo "new wishlist error" . $conn->error;
+      }
+    }
+}
+
 if (isset($_POST['btnAddCart'])) {
   if(empty($_SESSION['cart'])) {
     $_SESSION['cart'] = array();

@@ -1,8 +1,11 @@
 <?php
 require_once 'dbConn.php';
 
+
+
 $sqlGetDetail = "SELECT product_name, product_image, rate, description FROM product WHERE product_id = ".$_SESSION['viewDetail']."";
 $resultDetail = $conn->query($sqlGetDetail);
+
 
 if ($resultDetail->num_rows > 0) {
   while($row = $resultDetail->fetch_assoc()) {
@@ -31,21 +34,13 @@ if ($resultDetail->num_rows > 0) {
                                         <h4>Price:</h4>
                                         <p>₱'.$row['rate'].'</p>
                                     </div>
-                                    <div class="quantity">
-                                        <h4>Quantity:</h4>
                                         <form action="product-detail.php" method="post">
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="action">
+                                    <div class="action" >
                                         <button name="btnAddCart" class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
-                                        <button name="btnBuyNow" class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</button>
+                                        <button name="btnAddWish" class="btn" href="#"><i class="fa fa-heart"></i>Add to Wishlist</button>
                                     </div>
                                     </form>
-                                    <div style="width: 700px;margin-left:350px; margin-top:-290px;"class="col-lg-12">
+                                    <div style="width: 700px;margin-left:350px; margin-top:-200px;"class="col-lg-12">
                                         <ul class="nav nav-pills nav-justified">
                                             <li class="nav-item">
                                                 <a class="nav-link active" data-toggle="pill" href="#description">Description</a>

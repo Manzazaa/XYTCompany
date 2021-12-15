@@ -51,6 +51,7 @@ if (isset($_POST['btnPlaceOrder'])) {
   $phone = $_POST['phone'];
   $address = $_POST['address'].', '.$_POST['city'].', '.$_POST['country'].', '.$_POST['zip'];
   $email = $_POST['email'];
+  $custID = $_SESSION['custID'];
   if(isset($_POST['rbPaypal'])){
     $paymentMode = 3;
   }
@@ -58,14 +59,56 @@ if (isset($_POST['btnPlaceOrder'])) {
     $paymentMode = 4;
   }
 
-  $sqlPlaceOrder = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status, address, email)
-  VALUES ('$date', '$fullName', '$phone', '$subTotal', 0, '$grandTotal', 0, '$grandTotal', 0, 0, '$paymentMode', 1, 1, '$address', '$email')";
+  $sqlPlaceOrder = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status, address, email, customerID)
+  VALUES ('$date', '$fullName', '$phone', '$subTotal', 0, '$grandTotal', 0, '$grandTotal', 0, 0, '$paymentMode', 1, 1, '$address', '$email', '$custID')";
 
   if ($conn->query($sqlPlaceOrder) === TRUE) {
     echo "Order Successfully Placed";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
+
+  $sqlGetCart = "SELECT order_id FROM orders WHERE customerID = ".$_SESSION['custID']."";
+  $resultGetCart = $conn->query($sqlGetCart);
+  if ($resultGetCart->num_rows > 0) {
+  while($row = $resultGetCart->fetch_assoc()) {
+      $orderID = $row['order_id'];
+
+      $sqlSelectProdID = "SELECT cart.product_id, cart.quantity, product.rate, cart.quantity * product.rate AS 'Total'
+      FROM product INNER JOIN cart ON product.product_id = cart.product_id WHERE cart.customerID =".$_SESSION['custID']."";
+      $resultSelectProd = $conn->query($sqlSelectProdID);
+
+      if ($resultSelectProd->num_rows > 0) {
+        while($row2 = $resultSelectProd->fetch_assoc()) {
+          $prodID = $row2['product_id'];
+          $quantity = $row2['quantity'];
+          $rate = $row2['rate'];
+          $total = $row2['Total'];
+
+          $sqlInsertItem = "INSERT INTO order_item(order_id, product_id, quantity, rate, total, order_item_status)
+          VALUES('$orderID', '$prodID', '$quantity', '$rate', '$total', 1)";
+
+          if ($conn->query($sqlInsertItem) === TRUE) {
+            echo "Order item inserted";
+          } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+          unset($_SESSION['cart']);
+
+          $sqlEmptyCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id =".$prodID."";
+          if ($conn->query($sqlEmptyCart) === TRUE) {
+            echo "cart now empty";
+          } else {
+            echo "Error deleting record: " . $conn->error;
+          }
+        }
+      }
+    }
+  } else {
+    echo "0 results";
+  }
+
+
 
 }
 

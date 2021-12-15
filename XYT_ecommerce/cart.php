@@ -7,6 +7,26 @@ $subTotal = 0;
 $shippingTotal = 0;
 $grandTotal = 0;
 
+if (isset($_POST['btnAddQuantity'])) {
+  $sqlUpdateCart = "UPDATE cart SET quantity = quantity + 1 WHERE product_id = ".$_POST['btnAddQuantity']." AND customerID = ".$_SESSION['custID']."";
+
+  if ($conn->query($sqlUpdateCart) === TRUE) {
+    echo "Updated quantity";
+  } else {
+    echo "Error updating record: " . $conn->error;
+  }
+}
+
+if (isset($_POST['btnMinusQuantity'])) {
+  $sqlUpdateCart = "UPDATE cart SET quantity = quantity - 1 WHERE product_id = ".$_POST['btnMinusQuantity']." AND customerID = ".$_SESSION['custID']."";
+
+  if ($conn->query($sqlUpdateCart) === TRUE) {
+    echo "Updated quantity";
+  } else {
+    echo "Error updating record: " . $conn->error;
+  }
+}
+
 if (isset($_POST['btnEmptyCart'])) {
   unset($_SESSION['cart']);
 
