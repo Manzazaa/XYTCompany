@@ -68,8 +68,6 @@ if (isset($_POST['btnPlaceOrder'])) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
-
-
   $sqlGetCart = "SELECT order_id FROM orders WHERE customerID = ".$_SESSION['custID']."";
   $resultGetCart = $conn->query($sqlGetCart);
   if ($resultGetCart->num_rows > 0) {
@@ -117,6 +115,7 @@ if (isset($_POST['btnPlaceOrder'])) {
     echo "0 results";
   }
 
+header("Location: index.php");
 }
 
  ?>
