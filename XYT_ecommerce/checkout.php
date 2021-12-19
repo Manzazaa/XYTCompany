@@ -68,6 +68,8 @@ if (isset($_POST['btnPlaceOrder'])) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
+
+
   $sqlGetCart = "SELECT order_id FROM orders WHERE customerID = ".$_SESSION['custID']."";
   $resultGetCart = $conn->query($sqlGetCart);
   if ($resultGetCart->num_rows > 0) {
@@ -95,6 +97,13 @@ if (isset($_POST['btnPlaceOrder'])) {
           }
           unset($_SESSION['cart']);
 
+          $sqlUpdateProd = "UPDATE product SET quantity = quantity - ".$quantity." WHERE product_id =".$prodID."";
+          if ($conn->query($sqlUpdateProd) === TRUE) {
+            echo "product quantity deducted";
+          } else {
+            echo "Error updating record: " . $conn->error;
+          }
+
           $sqlEmptyCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id =".$prodID."";
           if ($conn->query($sqlEmptyCart) === TRUE) {
             echo "cart now empty";
@@ -107,8 +116,6 @@ if (isset($_POST['btnPlaceOrder'])) {
   } else {
     echo "0 results";
   }
-
-
 
 }
 
