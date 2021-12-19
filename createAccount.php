@@ -119,6 +119,4 @@ background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%,
 	</div> <!-- /col-md-12 -->	
 </div> <!-- /row-->
 
-
-<script src="custom/js/setting.js"></script>
 <?php require_once 'includes/footer.php'; ?>
