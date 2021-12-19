@@ -26,11 +26,11 @@ include 'php_action/createEmployeeAccount.php';
 				<form action="" method="post" class="form-horizontal" id="signUpForm">
 					<fieldset>
 						<legend>Employee Biodata</legend>
-
+						<div class="changeUsenrameMessages">
 							<?php
 								if (isset($_SESSION['status'])){
 									?><div class="changeUsenrameMessages"  style="background: rgb(102,192,244);
-									background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%, rgba(27,40,56,1) 100%); color: black;"><h4 style="padding: 10px; "><?php
+background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%, rgba(27,40,56,1) 100%); color: black;"><h4 style="padding: 10px; "><?php
 									echo $_SESSION['status'];
 									unset($_SESSION['status']);
 								}
@@ -74,6 +74,7 @@ include 'php_action/createEmployeeAccount.php';
                             <option value="1">ADMINISTRATIVE</option>
                             <option value="2">INVENTORY</option>
                             <option value="3">SALES</option>
+                            <option value="4">LOGISTICS</option>
                         </select>
                         </div>
                     </div>
