@@ -18,6 +18,7 @@ if($_POST) {
   $dueValue 						= $_POST['dueValue'];
   $paymentType 					= $_POST['paymentType'];
   $paymentStatus 				= $_POST['paymentStatus'];
+  $productName					= $_POST['productName[]']; 	
 
 				
 	$sql = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status) VALUES ('$orderDate', '$clientName', '$clientContact', '$subTotalValue', '$vatValue', '$totalAmountValue', '$discount', '$grandTotalValue', '$paid', '$dueValue', $paymentType, $paymentStatus, 1)";
@@ -48,8 +49,8 @@ if($_POST) {
 				$connect->query($updateProductTable);
 
 				// add into order_item
-				$orderItemSql = "INSERT INTO order_item (order_id, product_id, quantity, rate, total, order_item_status) 
-				VALUES ('$order_id', '".$_POST['productName'][$x]."', '".$_POST['quantity'][$x]."', '".$_POST['rateValue'][$x]."', '".$_POST['totalValue'][$x]."', 1)";
+				$orderItemSql = "INSERT INTO order_item (order_id, product_id, order_date, quantity, rate, total, order_item_status) 
+				VALUES ('$order_id', '".$_POST['productName'][$x]."', '$orderDate', '".$_POST['quantity'][$x]."', '".$_POST['rateValue'][$x]."', '".$_POST['totalValue'][$x]."', 1)";
 
 				$connect->query($orderItemSql);		
 
