@@ -4,6 +4,11 @@ $(document).ready(function() {
 	// order date picker
 	$("#endDate").datepicker();
 
+	// order date picker
+	$("#startDate1").datepicker();
+	// order date picker
+	$("#endDate1").datepicker();
+
 	$("#getOrderReportForm").unbind('submit').bind('submit', function() {
 		
 		var startDate = $("#startDate").val();
