@@ -74,7 +74,6 @@ include 'php_action/createEmployeeAccount.php';
                             <option value="1">ADMINISTRATIVE</option>
                             <option value="2">INVENTORY</option>
                             <option value="3">SALES</option>
-                            <option value="4">LOGISTICS</option>
                         </select>
                         </div>
                     </div>
