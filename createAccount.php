@@ -5,8 +5,8 @@ $user_id = $_SESSION['userId'];
 $sql = "SELECT * FROM users WHERE user_id = {$user_id}";
 $query = $connect->query($sql);
 $result = $query->fetch_assoc();
+include 'php_action/createEmployeeAccount.php';
 
-$connect->close();
 ?>
 
 <div class="row">
@@ -23,11 +23,20 @@ $connect->close();
 
 			<div class="panel-body">
 
-				<form action="php_action/createEmployeeAccount.php" method="post" class="form-horizontal" id="signUpForm">
+				<form action="" method="post" class="form-horizontal" id="signUpForm">
 					<fieldset>
 						<legend>Employee Biodata</legend>
-
-						<div class="createAccountMessage"></div>
+						<div class="changeUsenrameMessages">
+							<?php
+								if (isset($_SESSION['status'])){
+									?><div class="changeUsenrameMessages"  style="background: rgb(102,192,244);
+										background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%, rgba(27,40,56,1) 100%); color: black;"><h4 style="padding: 10px; "><?php
+									echo $_SESSION['status'];
+									unset($_SESSION['status']);
+								}
+							?>
+							</h4>
+						</div>
 
                       <div class="form-group">
 					    <label for="firstName" class="col-sm-2 control-label">First Name</label>
@@ -110,6 +119,4 @@ $connect->close();
 	</div> <!-- /col-md-12 -->	
 </div> <!-- /row-->
 
-
-<script src="custom/js/setting.js"></script>
 <?php require_once 'includes/footer.php'; ?>

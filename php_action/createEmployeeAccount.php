@@ -5,7 +5,6 @@ require_once 'core.php';
 // // print_r($valid);
 
 if(isset($_POST['register'])){
-  $valid['success'] = array('success' => false, 'messages' => array());
 
   $firstName			= $_POST['firstName'];
   $lastName				= $_POST['lastName'];
@@ -23,33 +22,27 @@ if(isset($_POST['register'])){
     $res_e = mysqli_query($connect, $sql_e);
 
     if (mysqli_num_rows($res_u) > 0) {
-      $valid['success'] = false;
-      $valid['messages'] = "Username already exists.";
-      echo "Username already exists.";	
+      $_SESSION['status'] = "Username already exists.";
+      header($_SERVER['PHP_SELF']);
+
             if(mysqli_num_rows($res_e) > 0){
-              $valid['success'] = false;
-              $valid['messages'] = "Email already exists.";
+              $_SESSION['status'] = "Email already exists.";
       } 
      }
     else if(mysqli_num_rows($res_e) > 0){
-      $valid['success'] = false;
-      $valid['messages'] = "Email already exists.";
+      $_SESSION['status'] = "Email already exists.";
       } 
     else if($password != $cpassword){
-      $valid['success'] = false;
-      $valid['messages'] = "Passwords do not match.";
+      $_SESSION['status'] = "Passwords do not match.";
     }
     else{
 	    $sql = "INSERT INTO users (first_name, last_name, email, date_of_birth, employee_type, username, password, user_status) 
         VALUES ('$firstName', '$lastName', '$email', '$dateOfBirth', '$employeeType', '$username', '$password', 1)";
 	    if(mysqli_query($connect, $sql) === true) {
-        $valid['success'] = true;
-        $valid['messages'] = "Success.";	
+        $_SESSION['status'] = "Success.";	
       }
   }
   $connect->close();
-	echo json_encode($valid);
-
 }
 
 	

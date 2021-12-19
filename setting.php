@@ -87,9 +87,6 @@ $connect->close();
 
 						<a class="btn btn-primary" href="employee.php">Manage Employee Account </a>
 
-						<a class="btn btn-primary" href="#">View Users </a>
-					      
-
 					</fieldset>
 				</form>
 
