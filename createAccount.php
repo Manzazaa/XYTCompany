@@ -30,7 +30,7 @@ include 'php_action/createEmployeeAccount.php';
 							<?php
 								if (isset($_SESSION['status'])){
 									?><div class="changeUsenrameMessages"  style="background: rgb(102,192,244);
-background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%, rgba(27,40,56,1) 100%); color: black;"><h4 style="padding: 10px; "><?php
+										background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%, rgba(27,40,56,1) 100%); color: black;"><h4 style="padding: 10px; "><?php
 									echo $_SESSION['status'];
 									unset($_SESSION['status']);
 								}
@@ -119,6 +119,4 @@ background: linear-gradient(90deg, rgba(102,192,244,1) 0%, rgba(42,71,94,1) 80%,
 	</div> <!-- /col-md-12 -->	
 </div> <!-- /row-->
 
-
-<script src="custom/js/setting.js"></script>
 <?php require_once 'includes/footer.php'; ?>

@@ -26,7 +26,7 @@ if($_POST) {
 		</tr>
 
 		<tr>';
-		$totalAmount = "";
+		$totalAmount = 0;
 		while ($result = $query->fetch_assoc()) {
 			$table .= '<tr>
 				<td><center>'.$result['order_date'].'</center></td>
@@ -34,7 +34,7 @@ if($_POST) {
 				<td><center>'.$result['client_contact'].'</center></td>
 				<td><center>'.$result['grand_total'].'</center></td>
 			</tr>';	
-			$totalAmount = $result['grand_total'];
+			$totalAmount += intval($result['grand_total']);
 		}
 		$table .= '
 		</tr>
