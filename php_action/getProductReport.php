@@ -13,7 +13,7 @@ if($_POST) {
 	$format = DateTime::createFromFormat('m/d/Y',$endDate);
 	$end_date = $format->format("Y-m-d");
 
-	$sql = "SELECT * FROM order_item WHERE order_date >= '$start_date' AND order_date <= '$end_date' and order_item_status = 1";
+	$sql = "SELECT * FROM order_item WHERE order_date >= '$start_date' AND order_date <= '$end_date' and order_item_status = 1 ORDER BY product_id";
 	$query = $connect->query($sql);
 
 	$table = '
