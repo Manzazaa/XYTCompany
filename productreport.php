@@ -4,7 +4,7 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">	
-				<i class="glyphicon glyphicon-check"></i>	Products Report
+				<i class="glyphicon glyphicon-check"></i>	Inventory Report
 			</div>
 			<!-- /panel-heading -->
 			<div class="panel-body">
