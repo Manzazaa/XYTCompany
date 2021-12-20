@@ -66,13 +66,20 @@
     
           <li class="dropdown" id="navOrder">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Orders <span class="caret"></span></a>
-              <ul class="dropdown-menu">            
-                <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Add Orders</a></li>            
+              <ul class="dropdown-menu"> 
+               <li id="topNavAddOrder"><a href="supplyorder.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Add Supplies</a></li>            
+                <li id="topNavAddOrder"><a href="orders.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Add Orders</a></li>             
                 <li id="topNavManageOrder"><a href="orders.php?o=manord"> <i class="glyphicon glyphicon-edit"></i> Manage Orders</a></li>            
               </ul>
           </li> 
     
-            <li id="navReport"><a href="report.php"> <i class="glyphicon glyphicon-check"></i> Report </a></li>
+            <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Reports <span class="caret"></span></a>
+              <ul class="dropdown-menu">            
+                <li id="topNavAddOrder"><a href="report.php?o=add"> <i class="glyphicon glyphicon-stats"></i> Sales Report</a></li>            
+                <li id="topNavManageOrder"><a href="productreport.php?o=manord"> <i class="glyphicon glyphicon-stats"></i> Inventory Report</a></li>            
+              </ul>
+          </li> 
     
             <li class="dropdown" id="navSetting">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
@@ -140,8 +147,6 @@
           </ul>
         </li> 
 
-        <li id="navReport"><a href="report.php"> <i class="glyphicon glyphicon-check"></i> Report </a></li>  
-
         <li class="dropdown" id="navSetting">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
               <ul class="dropdown-menu">             
@@ -171,6 +176,22 @@
                
       </ul>
       <?php
+      	break;
+        case 5:?>
+          <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Reports <span class="caret"></span></a>
+              <ul class="dropdown-menu">            
+                <li id="topNavAddOrder"><a href="report.php?o=add"> <i class="glyphicon glyphicon-stats"></i> Sales Report</a></li>            
+                <li id="topNavManageOrder"><a href="productreport.php?o=manord"> <i class="glyphicon glyphicon-stats"></i> Inventory Report</a></li>            
+              </ul>
+          </li> 
+            <li class="dropdown" id="navSetting">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
+              <ul class="dropdown-menu">             
+                <li id="topNavLogout"><a href="logout.php"> <i class="glyphicon glyphicon-log-out"></i> Logout</a></li>            
+              </ul>
+        </li>        
+    <?php
 				}
       
     ?>
