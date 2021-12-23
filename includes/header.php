@@ -190,7 +190,26 @@
               <ul class="dropdown-menu">             
                 <li id="topNavLogout"><a href="logout.php"> <i class="glyphicon glyphicon-log-out"></i> Logout</a></li>            
               </ul>
-        </li>        
+        </li>
+
+        <?php
+        break;
+        case 6:?>
+
+     <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Orders <span class="caret"></span></a>
+              <ul class="dropdown-menu"> 
+               <li id="topNavAddOrder"><a href="supplyorder.php?o=add"> <i class="glyphicon glyphicon-plus"></i> Add Supplies</a></li>                        
+                 <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-edit"></i> Manage Products </a></li>              
+              </ul>
+          </li> 
+           <li class="dropdown" id="navSetting">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
+              <ul class="dropdown-menu">             
+                <li id="topNavLogout"><a href="logout.php"> <i class="glyphicon glyphicon-log-out"></i> Logout</a></li>            
+              </ul>
+        </li>
+
     <?php
 				}
       
