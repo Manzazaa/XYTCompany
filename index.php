@@ -63,6 +63,9 @@ if($_POST) {
 					case 5:
 						header('location: report.php');	
 						break;
+					case 6:
+						header('location: report.php');	
+						break;	
 				}
 				//PLAN: Based on the employee type, the header will be different.
 			} 
