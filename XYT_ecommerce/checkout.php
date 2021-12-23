@@ -89,8 +89,8 @@ if (isset($_POST['btnPlaceOrder'])) {
             $rate = $row2['rate'];
             $total = $row2['Total'];
 
-            $sqlInsertItem = "INSERT INTO order_item(order_id, product_id, quantity, rate, total, order_item_status)
-            VALUES('$orderID', '$prodID', '$quantity', '$rate', '$total', 1)";
+            $sqlInsertItem = "INSERT INTO order_item(order_id, product_id, order_date,quantity, rate, total, order_item_status)
+            VALUES('$orderID', '$prodID', '$date', '$quantity', '$rate', '$total', 1)";
 
             if ($conn->query($sqlInsertItem) === TRUE) {
               echo "Order item inserted";
