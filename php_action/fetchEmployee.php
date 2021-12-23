@@ -26,6 +26,10 @@ if($result->num_rows > 0) {
  		$employeeType = "<label class='label label-success'>Sales</label>";
  	} elseif  ($row[5] == 4) {
  		$employeeType = "<label class='label label-success'>Logistics</label>";
+ 	} elseif  ($row[5] == 5) {
+ 		$employeeType = "<label class='label label-success'>Accounting</label>";
+ 	} elseif  ($row[5] == 4) {
+ 		$employeeType = "<label class='label label-success'>Purchasing</label>";
  	}
 
 

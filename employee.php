@@ -90,10 +90,13 @@
 		        	<label class="col-sm-1 control-label">: </label>
 					    <div class="col-sm-8">
 					      <select class="form-control" id="employeeType" name="employeeType">
-					      	<option value="">~~SELECT~~</option>
-					      	<option value="1">Admin</option>
-					      	<option value="2">Inventory</option>
-					      	<option value="3">Sales</option>
+					      	  				<option value="">Select Employee Type</option>
+                            <option value="1">ADMINISTRATIVE</option>
+                            <option value="2">INVENTORY</option>
+                            <option value="3">SALES</option>
+                            <option value="4">LOGISTICS</option>
+														<option value="5">ACCOUNTING</option>
+														<option value="6">PURCHASING</option>
 					      </select>
 					    </div>
 		        </div> <!-- /form-group-->	
