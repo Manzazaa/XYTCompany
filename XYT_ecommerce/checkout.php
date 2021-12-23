@@ -8,6 +8,7 @@ $phone = "";
 $shippingTotal = 0;
 $subTotal = 0;
 $grandTotal = 0;
+$error = "";
 
 if (isset($_SESSION['custID'])) {
     $sqlGetCustInfo = "SELECT fname, lname, phone, email FROM customers WHERE customerID =".$_SESSION['custID']."";
@@ -45,77 +46,81 @@ if (isset($_SESSION['custID'])) {
 }
 
 if (isset($_POST['btnPlaceOrder'])) {
-  //date, full name, phone, subtotal, 0, grandtotal, 0, grandtotal, 0, 0, paymentType, 1, 1, address, email
-  $date = date("Y-m-d");
-  $fullName = $_POST['fName'].' '.$_POST['lName'];
-  $phone = $_POST['phone'];
-  $address = $_POST['address'].', '.$_POST['city'].', '.$_POST['country'].', '.$_POST['zip'];
-  $email = $_POST['email'];
-  $custID = $_SESSION['custID'];
-  if(isset($_POST['rbPaypal'])){
-    $paymentMode = 3;
-  }
-  if(isset($_POST['rbCod'])){
-    $paymentMode = 4;
-  }
+  if (empty($_POST['fName']) || empty($_POST['lName']) || empty($_POST['phone']) || empty($_POST['address']) || empty($_POST['city'])
+  || empty($_POST['country']) || empty($_POST['zip']) || empty($_POST['email'])){
+    $error = "<div style='color:red'>Please fill in all the required fields</div>";
+  }else {
+    $date = date("Y-m-d");
+    $fullName = $_POST['fName'].' '.$_POST['lName'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'].', '.$_POST['city'].', '.$_POST['country'].', '.$_POST['zip'];
+    $email = $_POST['email'];
+    $custID = $_SESSION['custID'];
+    if(isset($_POST['rbPaypal'])){
+      $paymentMode = 3;
+    }
+    if(isset($_POST['rbCod'])){
+      $paymentMode = 4;
+    }
 
-  $sqlPlaceOrder = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status, address, email, customerID)
-  VALUES ('$date', '$fullName', '$phone', '$subTotal', 0, '$grandTotal', 0, '$grandTotal', 0, 0, '$paymentMode', 1, 1, '$address', '$email', '$custID')";
+    $sqlPlaceOrder = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status, address, email, customerID)
+    VALUES ('$date', '$fullName', '$phone', '$subTotal', 0, '$grandTotal', 0, '$grandTotal', 0, 0, '$paymentMode', 1, 1, '$address', '$email', '$custID')";
 
-  if ($conn->query($sqlPlaceOrder) === TRUE) {
-    echo "Order Successfully Placed";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+    if ($conn->query($sqlPlaceOrder) === TRUE) {
+      echo "Order Successfully Placed";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 
-  $sqlGetCart = "SELECT order_id FROM orders WHERE customerID = ".$_SESSION['custID']."";
-  $resultGetCart = $conn->query($sqlGetCart);
-  if ($resultGetCart->num_rows > 0) {
-  while($row = $resultGetCart->fetch_assoc()) {
-      $orderID = $row['order_id'];
+    $sqlGetCart = "SELECT order_id FROM orders WHERE customerID = ".$_SESSION['custID']."";
+    $resultGetCart = $conn->query($sqlGetCart);
+    if ($resultGetCart->num_rows > 0) {
+    while($row = $resultGetCart->fetch_assoc()) {
+        $orderID = $row['order_id'];
 
-      $sqlSelectProdID = "SELECT cart.product_id, cart.quantity, product.rate, cart.quantity * product.rate AS 'Total'
-      FROM product INNER JOIN cart ON product.product_id = cart.product_id WHERE cart.customerID =".$_SESSION['custID']."";
-      $resultSelectProd = $conn->query($sqlSelectProdID);
+        $sqlSelectProdID = "SELECT cart.product_id, cart.quantity, product.rate, cart.quantity * product.rate AS 'Total'
+        FROM product INNER JOIN cart ON product.product_id = cart.product_id WHERE cart.customerID =".$_SESSION['custID']."";
+        $resultSelectProd = $conn->query($sqlSelectProdID);
 
-      if ($resultSelectProd->num_rows > 0) {
-        while($row2 = $resultSelectProd->fetch_assoc()) {
-          $prodID = $row2['product_id'];
-          $quantity = $row2['quantity'];
-          $rate = $row2['rate'];
-          $total = $row2['Total'];
+        if ($resultSelectProd->num_rows > 0) {
+          while($row2 = $resultSelectProd->fetch_assoc()) {
+            $prodID = $row2['product_id'];
+            $quantity = $row2['quantity'];
+            $rate = $row2['rate'];
+            $total = $row2['Total'];
 
-          $sqlInsertItem = "INSERT INTO order_item(order_id, product_id, quantity, rate, total, order_item_status)
-          VALUES('$orderID', '$prodID', '$quantity', '$rate', '$total', 1)";
+            $sqlInsertItem = "INSERT INTO order_item(order_id, product_id, quantity, rate, total, order_item_status)
+            VALUES('$orderID', '$prodID', '$quantity', '$rate', '$total', 1)";
 
-          if ($conn->query($sqlInsertItem) === TRUE) {
-            echo "Order item inserted";
-          } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-          }
-          unset($_SESSION['cart']);
+            if ($conn->query($sqlInsertItem) === TRUE) {
+              echo "Order item inserted";
+            } else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            unset($_SESSION['cart']);
 
-          $sqlUpdateProd = "UPDATE product SET quantity = quantity - ".$quantity." WHERE product_id =".$prodID."";
-          if ($conn->query($sqlUpdateProd) === TRUE) {
-            echo "product quantity deducted";
-          } else {
-            echo "Error updating record: " . $conn->error;
-          }
+            $sqlUpdateProd = "UPDATE product SET quantity = quantity - ".$quantity." WHERE product_id =".$prodID."";
+            if ($conn->query($sqlUpdateProd) === TRUE) {
+              echo "product quantity deducted";
+            } else {
+              echo "Error updating record: " . $conn->error;
+            }
 
-          $sqlEmptyCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id =".$prodID."";
-          if ($conn->query($sqlEmptyCart) === TRUE) {
-            echo "cart now empty";
-          } else {
-            echo "Error deleting record: " . $conn->error;
+            $sqlEmptyCart = "DELETE FROM cart WHERE customerID = ".$_SESSION['custID']." AND product_id =".$prodID."";
+            if ($conn->query($sqlEmptyCart) === TRUE) {
+              echo "cart now empty";
+            } else {
+              echo "Error deleting record: " . $conn->error;
+            }
           }
         }
       }
+    } else {
+      echo "0 results";
     }
-  } else {
-    echo "0 results";
+  header("Location: index.php");
   }
 
-header("Location: index.php");
 }
 
  ?>
@@ -156,6 +161,7 @@ header("Location: index.php");
                     <li class="breadcrumb-item"><a href="#">Product</a></li>
                     <li class="breadcrumb-item active">Checkout</li>
                 </ul>
+                <?php echo $error; ?>
             </div>
         </div>
         <!-- Breadcrumb End -->
@@ -172,23 +178,23 @@ header("Location: index.php");
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>First Name</label>
-                                        <input name="fName"class="form-control" type="text" placeholder="First Name" value="<?php echo $fName ?>">
+                                        <input name="fName"class="form-control" type="text"  value="<?php echo $fName ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Last Name"</label>
-                                        <input name="lName"class="form-control" type="text" placeholder="Last Name" value="<?php echo $lName ?>">
+                                        <input name="lName"class="form-control" type="text"  value="<?php echo $lName ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>E-mail</label>
-                                        <input name="email"class="form-control" type="text" placeholder="E-mail" value="<?php echo $email ?>">
+                                        <input name="email"class="form-control" type="text"  value="<?php echo $email ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Mobile No</label>
-                                        <input name="phone"class="form-control" type="text" placeholder="Mobile No" value="<?php echo $phone ?>">
+                                        <input name="phone"class="form-control" type="text" value="<?php echo $phone ?>">
                                     </div>
                                     <div class="col-md-12">
                                         <label>Address</label>
-                                        <input name="address"class="form-control" type="text" placeholder="Address" >
+                                        <input name="address"class="form-control" type="text" >
                                     </div>
                                     <div class="col-md-6">
                                         <label>Country</label>
@@ -200,12 +206,12 @@ header("Location: index.php");
                                     </div>
                                     <div class="col-md-6">
                                         <label>City</label>
-                                        <input name="city"class="form-control" type="text" placeholder="City">
+                                        <input name="city"class="form-control" type="text" >
                                     </div>
 
                                     <div class="col-md-6">
                                         <label>ZIP Code</label>
-                                        <input name="zip"class="form-control" type="text" placeholder="ZIP Code">
+                                        <input name="zip"class="form-control" type="text" >
                                     </div>
                                     <div class="col-md-12">
 
