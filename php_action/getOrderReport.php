@@ -11,7 +11,7 @@ if($_POST) {
 
 	$endDate = $_POST['endDate'];
 	$format = DateTime::createFromFormat('m/d/Y',$endDate);
-	$end_date = $format->format("Y-m-d");
+	$end_date = $format->fo$rmat("Y-m-d");
 
 	$sql = "SELECT * FROM orders WHERE order_date >= '$start_date' AND order_date <= '$end_date' and order_status = 1";
 	$query = $connect->query($sql);
