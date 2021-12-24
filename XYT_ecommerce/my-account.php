@@ -4,6 +4,34 @@ include 'dbConn.php';
 
 $cartCount = 0;
 $wishCount = 0;
+
+if (isset($_SESSION['custID'])) {
+  //CHECKING NUMBERS OF PRODUCT IN WISHLIST
+  $sqlWishCount = "SELECT SUM(quantity) FROM wishlist WHERE customerID = ".$_SESSION['custID']."";
+  $resultWishCount = $conn->query($sqlWishCount);
+  if ($resultWishCount->num_rows == 0) {
+    $wishCount = 0;
+  }
+  if ($resultWishCount->num_rows > 0) {
+    while ($row = $resultWishCount->fetch_assoc()) {
+      $wishCount = $row['SUM(quantity)'];
+    }
+  }
+
+  //CHECKING NUMBER OF PRODUCTS IN CART
+  $sqlCartCount = "SELECT SUM(quantity) FROM cart WHERE customerID = ".$_SESSION['custID']."";
+  $resultCartCount = $conn->query($sqlCartCount);
+  if ($resultCartCount->num_rows == 0) {
+    $cartCount = 0;
+  }
+  if ($resultCartCount->num_rows > 0) {
+    while ($row = $resultCartCount->fetch_assoc()) {
+      $cartCount = $row['SUM(quantity)'];
+    }
+  }
+}
+
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,40 +123,14 @@ $wishCount = 0;
                                     <table class="table table-bordered">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>No</th>
                                                 <th>Product</th>
                                                 <th>Date</th>
-                                                <th>Price</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>EST delivery</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
-                                        </tbody>
+                                        <?php include 'myOrdersDisp.php' ?>
                                     </table>
                                 </div>
                             </div>
