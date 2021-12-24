@@ -35,6 +35,7 @@ if($_POST) {
 
 
     $table2 =  '
+	<br>
 	<table border="1" cellspacing="0" cellpadding="0" style="width:100%;">
         <caption>Least Salable<caption>
 		<tr>
