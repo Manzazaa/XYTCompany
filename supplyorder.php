@@ -45,7 +45,7 @@ if($_GET['o'] == 'add') {
 
 			<div class="success-messages"></div> <!--/success-messages-->
 
-  		<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createOrderForm">
+  		<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createAddSupplyForm">
 
 			  <div class="form-group">
 			    <label for="orderDate" class="col-sm-2 control-label">Order Date</label> 
@@ -56,15 +56,20 @@ if($_GET['o'] == 'add') {
 			  <div class="form-group">
 			    <label for="clientName" class="col-sm-2 control-label">Supplier Name</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Supplier Name" autocomplete="off" />
+			      <select class="form-control" id="clientName" name="clientName">
+			      	<option>~~SELECT~~</option>
+			      	<?php 
+				      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+								
+				      	?>
+			      	</select>
 			    </div>
-			  </div> <!--/form-group-->
-			  <div class="form-group">
-			    <label for="clientContact" class="col-sm-2 control-label">Supplier Contact</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Supplier Contact" autocomplete="off" />
-			    </div>
-			  </div> <!--/form-group-->			  
+			  </div> <!--/form-group-->	  
 
 			  <table class="table" id="productTable">
 			  	<thead>
@@ -123,15 +128,27 @@ if($_GET['o'] == 'add') {
 			  	</tbody>			  	
 			  </table>
 
+
+			  <div class="col-md-6">
+			  	<div class="form-group">
+				    <label for="subTotal" class="col-sm-3 control-label">Total Amount</label>
+				    <div class="col-sm-9">
+				      <input type="text" class="form-control" id="subTotal" name="subTotal" disabled="true" />
+				      <input type="hidden" class="form-control" id="subTotalValue" name="subTotalValue" />
+				    </div>
+				  </div> <!--/form-group-->			  			  		  		  
+			  </div> <!--/col-md-6-->							  
+
 			  <div class="form-group submitButtonFooter">
 			    <div class="col-sm-offset-2 col-sm-10">
 			    <button type="button" class="btn btn-default" onclick="addRow()" id="addRowBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-plus-sign"></i> Add Row </button>
 
-			      <button type="submit" id="createOrderBtn" data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
+			      <button type="submit" id="createOrderBtn" data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Add Supplies</button>
 
 			      <button type="reset" class="btn btn-default" onclick="resetOrderForm()"><i class="glyphicon glyphicon-erase"></i> Reset</button>
 			    </div>
 			  </div>
+
 			</form>
 		<?php } else if($_GET['o'] == 'manord') { 
 			// manage order
