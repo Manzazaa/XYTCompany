@@ -45,7 +45,7 @@ if($_GET['o'] == 'add') {
 
 			<div class="success-messages"></div> <!--/success-messages-->
 
-  		<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createAddSupplyForm">
+  		<form class="form-horizontal" method="POST" action="php_action/createOrderSupply.php" id="createAddSupplyForm">
 
 			  <div class="form-group">
 			    <label for="orderDate" class="col-sm-2 control-label">Order Date</label> 

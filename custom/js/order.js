@@ -33,8 +33,7 @@ $(document).ready(function() {
 			$('.text-danger').remove();
 				
 			var orderDate = $("#orderDate").val();
-			var clientName = $("#clientName").val();
-			var discount = $("#discount").val();	
+			var clientName = $("#clientName").val();	
 
 			// form validation 
 			if(orderDate == "") {
