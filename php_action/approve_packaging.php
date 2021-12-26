@@ -6,11 +6,15 @@ $valid['success'] = array('success' => false, 'messages' => array());
 
 if($_POST) {	
 
-	$sql = "UPDATE ordersupply SET packaging_status = 2";
+  $brandStatus = $_POST['editBrandStatus']; 
+  $brandId = $_POST['brandId'];
+
+
+	$sql = "UPDATE ordersupply SET packaging_status = '$brandStatus' WHERE ordersupply_id = '$brandId'";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;
-		$valid['messages'] = "Approved";	
+		$valid['messages'] = "Successfully Updated";	
 	} else {
 	 	$valid['success'] = false;
 	 	$valid['messages'] = "Error while adding the members";

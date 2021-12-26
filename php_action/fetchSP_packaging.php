@@ -16,6 +16,7 @@ if($result->num_rows > 0) {
  $approvalStatus = "";  
 
  while($row = $result->fetch_array()) {
+    $brandId = $row[0];
  	// active 
 
  	if($row[4] == 1) {
@@ -30,10 +31,8 @@ if($result->num_rows > 0) {
         Action <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-    <li><a href="approve_packaging.php"> <i class="glyphicon glyphicon-ok"></i> Approve</a></li>
-
-    <li><a href="setting.php"> <i class="glyphicon glyphicon-remove"></i> Deny</a></li>
-        </ul>
+        <li><a type="button" data-toggle="modal" data-target="#editBrandModel" onclick="editBrands('.$brandId.')"> <i class="glyphicon glyphicon-edit"></i> Package Status</a></li>     
+      </ul>
     </div>';
 
  	$output['data'][] = array( 	
