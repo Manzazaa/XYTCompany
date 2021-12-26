@@ -45,7 +45,7 @@ if($_GET['o'] == 'add') {
 
 			<div class="success-messages"></div> <!--/success-messages-->
 
-			<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createOrderForm">
+			<form class="form-horizontal" method="POST" action="php_action/createSupplyOrder.php" id="createOrderForm">
 
 			  <div class="form-group">
 			    <label for="orderDate" class="col-sm-2 control-label">Order Date</label> 
@@ -471,7 +471,7 @@ if($_GET['o'] == 'add') {
 <!-- /remove order-->
 
 
-<script src="custom/js/order.js"></script>
+<script src="custom/js/supplyorder.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>
 
