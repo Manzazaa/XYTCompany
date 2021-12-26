@@ -45,11 +45,7 @@ if($_GET['o'] == 'add') {
 
 			<div class="success-messages"></div> <!--/success-messages-->
 
-<<<<<<< HEAD
-  		<form class="form-horizontal" method="POST" action="php_action/createOrderSupply.php" id="createAddSupplyForm">
-=======
-  		<form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createOrderForm">
->>>>>>> parent of 8f11731 (add supplies (UI))
+
 
 			  <div class="form-group">
 			    <label for="orderDate" class="col-sm-2 control-label">Order Date</label> 
