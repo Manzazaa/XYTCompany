@@ -82,7 +82,7 @@ $orderItemResult = $connect->query($orderItemSql);
 		</tr>
 
 		<tr>
-			<th>VAT (13%)</th>
+			<th>VAT (12%)</th>
 			<th>'.$vat.'</th>			
 		</tr>
 
