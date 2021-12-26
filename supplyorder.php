@@ -127,11 +127,8 @@ if($_GET['o'] == 'add') {
 			    <div class="col-sm-offset-2 col-sm-10">
 			    <button type="button" class="btn btn-default" onclick="addRow()" id="addRowBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-plus-sign"></i> Add Row </button>
 
-<<<<<<< HEAD
 			      <button type="submit" id="createOrderBtn" name="createOrderBtn" data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Add Supplies</button>
-=======
 			      <button type="submit" id="createOrderBtn" data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
->>>>>>> parent of 8f11731 (add supplies (UI))
 
 			      <button type="reset" class="btn btn-default" onclick="resetOrderForm()"><i class="glyphicon glyphicon-erase"></i> Reset</button>
 			    </div>
