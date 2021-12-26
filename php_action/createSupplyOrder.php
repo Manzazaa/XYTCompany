@@ -11,7 +11,7 @@ if($_POST) {
   $subTotalValue 				= $_POST['subTotalValue'];
 
 				
-	$sql = "INSERT INTO ordersupply (order_date, supplier_id, total_amount, packaging_status, shipping_status, approval_status) VALUES ('$orderDate', '$clientName', '$subTotalValue', 1, 1, 1)";
+	$sql = "INSERT INTO ordersupply (order_date, brand_id, total_amount, packaging_status, shipping_status, approval_status) VALUES ('$orderDate', '$clientName', '$subTotalValue', 1, 1, 1)";
 	
 	
 	$order_id;

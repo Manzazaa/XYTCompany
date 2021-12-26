@@ -21,7 +21,7 @@
 						<tr>							
 							<th>ID</th>
 							<th>Order Date</th>
-							<th>Supplier ID</th>
+							<th>Supplier Name</th>
 							<th>Total Cost</th>
 							<th>Packaging</th>
 							<th>Shipping</th>

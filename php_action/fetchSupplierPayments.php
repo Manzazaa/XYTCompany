@@ -2,7 +2,7 @@
 
 require_once 'core.php';
 
-$sql = "SELECT ordersupply_id, order_date, supplier_id, total_amount, packaging_status, shipping_status, approval_status FROM ordersupply";
+$sql = "SELECT ordersupply.ordersupply_id, ordersupply.order_date, brands.brand_name, ordersupply.total_amount, ordersupply.packaging_status, ordersupply.shipping_status, ordersupply.approval_status FROM ordersupply INNER JOIN brands ON ordersupply.brand_id = brands.brand_id";
 
 $result = $connect->query($sql);
 
