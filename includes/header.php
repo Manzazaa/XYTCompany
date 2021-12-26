@@ -66,7 +66,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-ruble"></i> Products <span class="caret"></span></a>
               <ul class="dropdown-menu"> 
                  <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> View Products </a></li>
-                 <li id="navProduct"><a href="packaging.php"> <i class="glyphicon glyphicon-ruble"></i> Packaging Status </a></li>
+                 <li id="navProduct"><a href="packaging.php"> <i class="glyphicon glyphicon-ok"></i> Packaging Status </a></li>
                  </ul>
               </li> 
     
@@ -107,7 +107,13 @@
 
         <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Category</a></li>        
 
-        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Product </a></li>     
+        <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-ruble"></i> Products <span class="caret"></span></a>
+              <ul class="dropdown-menu"> 
+                 <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> View Products </a></li>
+                 <li id="navProduct"><a href="packaging.php"> <i class="glyphicon glyphicon-ok"></i> Packaging Status </a></li>
+                 </ul>
+              </li> 
 
         <li class="dropdown" id="navOrder">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Orders <span class="caret"></span></a>
@@ -117,7 +123,15 @@
           </ul>
         </li> 
 
-        <li id="navReport"><a href="report.php"> <i class="glyphicon glyphicon-check"></i> Report </a></li>                    
+        <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Reports <span class="caret"></span></a>
+              <ul class="dropdown-menu">            
+                <li id="topNavAddOrder"><a href="report.php?o=add"> <i class="glyphicon glyphicon-stats"></i> Sales Report</a></li>            
+                <li id="topNavManageOrder"><a href="productreport.php?o=manord"> <i class="glyphicon glyphicon-stats"></i> Inventory Report</a></li>
+                <li id="topNavManageOrder"><a href="analytics.php"> <i class="glyphicon glyphicon-stats"></i> Analytics</a></li>    
+                <li id="topNavManageOrder"><a href="supplierpayments.php?o=manord"> <i class=" glyphicon glyphicon-list-alt"></i> View Supplier Payments</a></li>            
+              </ul>
+          </li>                     
         <li class="dropdown" id="navSetting">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
               <ul class="dropdown-menu">             
@@ -133,7 +147,14 @@
 
         <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Category</a></li>        
 
-        <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Product </a></li>     
+         <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-ruble"></i> Products <span class="caret"></span></a>
+              <ul class="dropdown-menu"> 
+                 <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> View Products </a></li>
+                 <li id="navProduct"><a href="packaging.php"> <i class="glyphicon glyphicon-ok"></i> Packaging Status </a></li>
+                 </ul>
+              </li> 
+            
         <li class="dropdown" id="navSetting">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
               <ul class="dropdown-menu">             
