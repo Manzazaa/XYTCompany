@@ -4,8 +4,8 @@
 <div class="row">
 	<div class="col-md-12">
 
-		<ol class="breadcrumb">  
-		  <li class="active">Packaging Status</li>
+		<ol class="breadcrumb">	  
+		  <li class="active">SEO Approval Status</li>
 		</ol>
 
 		<div class="panel panel-default">
@@ -24,6 +24,8 @@
 							<th>Supplier Name</th>
 							<th>Total Cost</th>
 							<th>Packaging</th>
+							<th>Shipping</th>
+							<th>Approval</th>
 							<th style="width:15%;">Options</th>
 							
 						</tr>
@@ -41,7 +43,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
     	
-    	<form class="form-horizontal" id="editBrandForm" action="php_action/approve_packaging.php" method="POST">
+    	<form class="form-horizontal" id="editBrandForm" action="php_action/approve_seo.php" method="POST">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title"><i class="fa fa-edit"></i> Manage Status</h4>
@@ -89,6 +91,6 @@
 <!-- /edit brand -->
 
 
-<script src="custom/js/packaging.js"></script>
+<script src="custom/js/seo.js"></script>
 
 <?php require_once 'includes/footer.php'; ?>
