@@ -61,8 +61,14 @@
           <li id="navBrand"><a href="brand.php"><i class="glyphicon glyphicon-transfer"></i>  Suppliers</a></li>        
     
           <li id="navCategories"><a href="categories.php"> <i class="glyphicon glyphicon-th-list"></i> Category</a></li>        
-    
-          <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> Product </a></li>     
+
+          <li class="dropdown" id="navOrder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-ruble"></i> Products <span class="caret"></span></a>
+              <ul class="dropdown-menu"> 
+                 <li id="navProduct"><a href="product.php"> <i class="glyphicon glyphicon-ruble"></i> View Products </a></li>
+                 <li id="navProduct"><a href="packaging.php"> <i class="glyphicon glyphicon-ruble"></i> Packaging Status </a></li>
+                 </ul>
+              </li> 
     
           <li class="dropdown" id="navOrder">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Orders <span class="caret"></span></a>
