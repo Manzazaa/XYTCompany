@@ -56,15 +56,20 @@ if($_GET['o'] == 'add') {
 			  <div class="form-group">
 			    <label for="clientName" class="col-sm-2 control-label">Supplier Name</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Supplier Name" autocomplete="off" />
+			      <select class="form-control" id="clientName" name="clientName">
+			      		<option value="">~~SELECT~~</option>
+				      	<?php 
+				      	$sql = "SELECT brand_id, brand_name, brand_active, brand_status FROM brands WHERE brand_status = 1 AND brand_active = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+								
+				      	?>
+				      </select>
 			    </div>
-			  </div> <!--/form-group-->
-			  <div class="form-group">
-			    <label for="clientContact" class="col-sm-2 control-label">Supplier Contact</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Supplier Contact" autocomplete="off" />
-			    </div>
-			  </div> <!--/form-group-->			  
+			  </div> <!--/form-group-->		  
 
 			  <table class="table" id="productTable">
 			  	<thead>
@@ -122,6 +127,16 @@ if($_GET['o'] == 'add') {
 			  		?>
 			  	</tbody>			  	
 			  </table>
+
+				<!--SUB AMOUNT = TOTAL AMOUNT FOR PURCHASING SUPPLIES -->
+ 				<div class="col-md-6">
+			  	<div class="form-group">
+				    <label for="subTotal" class="col-sm-3 control-label">Total Amount</label>
+				    <div class="col-sm-9">
+				      <input type="text" class="form-control" id="subTotal" name="subTotal" disabled="true" />
+				      <input type="hidden" class="form-control" id="subTotalValue" name="subTotalValue" />
+				    </div>
+				  </div> <!--/form-group-->	
 
 			  <div class="form-group submitButtonFooter">
 			    <div class="col-sm-offset-2 col-sm-10">
