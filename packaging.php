@@ -56,6 +56,7 @@
 						<span class="sr-only">Loading...</span>
 					</div>
 
+					<div class="edit-brand-result">
 		        <div class="form-group">
 		        	<label for="editBrandStatus" class="col-sm-3 control-label">Status: </label>
 		        	<label class="col-sm-1 control-label">: </label>

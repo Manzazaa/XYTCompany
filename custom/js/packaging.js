@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('#navBrand').addClass('active');
 	
 	// manage brand table
-	manageBrandTable = $("#manageViewSuppPayments").DataTable({
+	manageViewSuppPayments = $("#manageViewSuppPayments").DataTable({
 		'ajax': 'php_action/fetchSP_packaging.php',
 		'order': []		
 	});
@@ -142,7 +142,7 @@ function editBrands(brandId = null) {
 					var brandStatus = $('#editBrandStatus').val();
 
 					if(brandStatus == "") {
-						$("#editBrandStatus").after('<p class="text-danger">Supplier Status field is required</p>');
+						$("#editBrandStatus").after('<p class="text-danger">Packaging status is required</p>');
 
 						$('#editBrandStatus').closest('.form-group').addClass('has-error');
 					} else {
@@ -171,7 +171,7 @@ function editBrands(brandId = null) {
 									$('#editBrandBtn').button('reset');
 
 									// reload the manage member table 
-									manageBrandTable.ajax.reload(null, false);								  	  										
+									manageViewSuppPayments.ajax.reload(null, false);								  	  										
 									// remove the error text
 									$(".text-danger").remove();
 									// remove the form error
