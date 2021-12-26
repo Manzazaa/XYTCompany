@@ -183,7 +183,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-shopping-cart"></i> Reports <span class="caret"></span></a>
               <ul class="dropdown-menu">            
                 <li id="topNavAddOrder"><a href="report.php?o=add"> <i class="glyphicon glyphicon-stats"></i> Sales Report</a></li>            
-                <li id="topNavManageOrder"><a href="productreport.php?o=manord"> <i class="glyphicon glyphicon-stats"></i> Inventory Report</a></li>            
+                <li id="topNavManageOrder"><a href="productreport.php?o=manord"> <i class="glyphicon glyphicon-stats"></i> Inventory Report</a></li>     
+                <li id="topNavManageOrder"><a href="supplierpayments.php?o=manord"> <i class=" glyphicon glyphicon-list-alt"></i> View Supplier Payments</a></li>        
               </ul>
           </li> 
             <li class="dropdown" id="navSetting">
