@@ -23,7 +23,8 @@
 				
 				<table class="table" id="manageBrandTable">
 					<thead>
-						<tr>							
+						<tr>			
+							<th>Supplier ID</th>				
 							<th>Supplier Name</th>
 							<th>Supplier Details</th>
 							<th>Status</th>

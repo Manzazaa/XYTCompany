@@ -34,7 +34,8 @@ if($result->num_rows > 0) {
 	  </ul>
 	</div>';
 
- 	$output['data'][] = array( 		
+ 	$output['data'][] = array( 	
+ 		$brandId,	
  		$row[1], 
  		$row[2],		
  		$activeBrands,
