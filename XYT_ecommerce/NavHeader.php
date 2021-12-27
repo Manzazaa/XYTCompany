@@ -49,7 +49,7 @@ if (isset($_SESSION['fname'])) {
                 <div class="navbar-nav mr-auto">
                     <a href="index.php" class="nav-item nav-link">Home</a>
                     <a href="product-list.php" class="nav-item nav-link">Products</a>
-                    <a href="my-account.php" class="nav-item nav-link">My Account</a>
+                    <a href="my-account.php" class="nav-item nav-link">My Orders</a>
                     <!--<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                         <div class="dropdown-menu">
