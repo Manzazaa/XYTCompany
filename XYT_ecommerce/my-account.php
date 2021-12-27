@@ -95,7 +95,7 @@ if (isset($_SESSION['custID'])) {
             <div class="container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">My Account</li>
+                    <li class="breadcrumb-item active">My Orders</li>
                 </ul>
             </div>
         </div>
